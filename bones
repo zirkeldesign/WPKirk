@@ -3,7 +3,7 @@
 
 define( 'WPBONES_MINIMAL_PHP_VERSION', "5.5.9" );
 
-if( version_compare( PHP_VERSION, WPBONES_MINIMAL_PHP_VERSION ) < 0 ) {
+if ( version_compare( PHP_VERSION, WPBONES_MINIMAL_PHP_VERSION ) < 0 ) {
   echo "\n\033[33;5;82mWarning!!\n";
   echo "\n\033[38;5;82m\t" . 'You must run with PHP version ' . WPBONES_MINIMAL_PHP_VERSION . ' or greather';
   echo "\033[0m\n\n";
@@ -52,7 +52,8 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 /**
  * @class BonesCommandLine
  */
-class BonesCommandLine {
+class BonesCommandLine
+{
 
   const VERSION = '0.1.13';
 
@@ -238,16 +239,20 @@ class BonesCommandLine {
     }
 
     // previous slug
-    $previousSlug = strtolower( str_replace( [ " ", "-" ], "_", $previousPluginName ) ) . "_slug";
+    $previousSlug = str_replace( "-", "_", sanitize_title( $previousPluginName ) ) . "_slug";
+    //$previousSlug = strtolower( str_replace( [ " ", "-" ], "_", $previousPluginName ) ) . "_slug";
 
     // slug
-    $slug = strtolower( str_replace( [ " ", "-" ], "_", $pluginName ) ) . "_slug";
+    $slug = str_replace( "-", "_", sanitize_title( $pluginName ) ) . "_slug";
+    //$slug = strtolower( str_replace( [ " ", "-" ], "_", $pluginName ) ) . "_slug";
 
     // previous css id
-    $previousCssId = strtolower( str_replace( [ " ", "-" ], "-", $previousPluginName ) );
+    $previousCssId = sanitize_title( $previousPluginName );
+    //$previousCssId = strtolower( str_replace( [ " ", "-" ], "-", $previousPluginName ) );
 
     // current css id
-    $currentCssId = strtolower( str_replace( [ " ", "-" ], "-", $pluginName ) );
+    $currentCssId = sanitize_title( $pluginName );
+    //$currentCssId = strtolower( str_replace( [ " ", "-" ], "-", $pluginName ) );
 
     // remove all composer
     $files = array_filter( array_map( function ( $e ) {
@@ -283,7 +288,7 @@ class BonesCommandLine {
     file_put_contents( 'namespace', $namespace );
 
     // run composer
-    `composer dump-autoload --optimize`;
+    $res = `composer dump-autoload --optimize`;
   }
 
   protected function install( $argv )
@@ -298,7 +303,7 @@ class BonesCommandLine {
       $this->info( "  install <plugin name>\n" );
       $this->line( "Arguments:" );
       $this->info( "  plugin name\tThe name of plugin" );
-      exit(0);
+      exit( 0 );
     }
     else {
       $namespace = $argv[ 0 ];
@@ -353,8 +358,8 @@ class BonesCommandLine {
       $this->install( $argv );
     }
     // migrate:create {table_name}
-    elseif( $this->option( 'migrate:create' ) ) {
-      $this->migrateCreate( $argv[1] );
+    elseif ( $this->option( 'migrate:create' ) ) {
+      $this->migrateCreate( $argv[ 1 ] );
     }
   }
 }
