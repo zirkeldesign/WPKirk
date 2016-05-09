@@ -30,8 +30,14 @@ return [
         'capability' => 'read',
         'icon'       => '',
         'view'       => 'Dashboard\DashboardController@secondMenu',
-      ]
-
+      ],
+      [
+        "page_title" => "Options",
+        "menu_title" => "Options",
+        'capability' => 'read',
+        'icon'       => '',
+        'view'       => 'Dashboard\DashboardController@optionsMenu',
+      ],
     ]
   ]
 ];
