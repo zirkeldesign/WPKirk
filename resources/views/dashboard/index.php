@@ -8,11 +8,14 @@
 -->
 
 <div class="kirk">
-  <h1>Hello, I'm the first WPKirk view</h1>
+  <h1>Hello, I'm the first <?php echo $plugin->Name ?> view</h1>
   <p>You may get variable from the controller. For example, the variable <code>kirk</code>is <?php echo $kirk ?></p>
 
   <h2>Configuration</h2>
   <p>Get the <code>custom</code> configuration by using <code>echo $plugin->config( 'custom.sample' )</code></p>
   <p><?php echo $plugin->config( 'custom.sample' ) ?></p>
+
+  <h2>Plugin information</h2>
+  <p>Author <?php echo $plugin->Author ?></p>
 
 </div>
