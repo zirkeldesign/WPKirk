@@ -22,21 +22,38 @@ return [
         "menu_title" => "First sub menu Menu title",
         'capability' => 'read',
         'icon'       => '',
-        'view'       => 'Dashboard\DashboardController@firstMenu',
+        'route'      => [
+          'get' => 'Dashboard\DashboardController@firstMenu'
+        ],
       ],
       [
         "page_title" => "Second sub menu title",
         "menu_title" => "Second sub menu Menu title",
         'capability' => 'read',
         'icon'       => '',
-        'view'       => 'Dashboard\DashboardController@secondMenu',
+        'route'      => [
+          'get' => 'Dashboard\DashboardController@secondMenu'
+        ],
       ],
       [
         "page_title" => "Options",
         "menu_title" => "Options",
         'capability' => 'read',
         'icon'       => '',
-        'view'       => 'Dashboard\DashboardController@optionsMenu',
+        'route'      => [
+          'get' => 'Dashboard\DashboardController@optionsMenu'
+        ],
+
+      ],
+      [
+        "page_title" => "Options View",
+        "menu_title" => "Options View",
+        'capability' => 'read',
+        'icon'       => '',
+        'route'      => [
+          'get'  => 'Dashboard\DashboardController@optionsView',
+          'post' => 'Dashboard\DashboardController@saveOptions'
+        ],
       ],
     ]
   ]
