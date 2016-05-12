@@ -55,6 +55,15 @@ return [
           'post' => 'Dashboard\DashboardController@saveOptions'
         ],
       ],
+      [
+        "page_title" => "Options View Resource",
+        "menu_title" => "Options View Resource",
+        'capability' => 'read',
+        'icon'       => '',
+        'route'      => [
+          'resource' => 'Dashboard\DashboardResourceController',
+        ],
+      ],
     ]
   ]
 ];
