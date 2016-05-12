@@ -42,4 +42,9 @@ class DashboardController extends Controller
     }
   }
 
+  public function customPage()
+  {
+    return WPKirk()->view( 'dashboard.custompage' )->with( 'method', $this->request->method );
+  }
+
 }
