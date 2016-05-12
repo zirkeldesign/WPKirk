@@ -55,7 +55,7 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 class BonesCommandLine
 {
 
-  const VERSION = '0.1.13';
+  const VERSION = '0.1.14';
 
   public function __construct()
   {
@@ -97,6 +97,7 @@ class BonesCommandLine
     $this->info( "\nAvailable commands:" );
     $this->line( "  install\t\tInstall a new WP Bones plugin" );
     $this->line( "  migrate:create\tCreate a new Migration" );
+    $this->line( "  make:controller\tCreate a new Controller" );
     $this->line( "  namespace\t\tSet or change the plugin namespace" );
 
     echo "\n\n";
@@ -332,6 +333,35 @@ class BonesCommandLine
     file_put_contents( "database/migrations/{$filename}", $content );
   }
 
+  protected function controllerCreate( $controllerName )
+  {
+    // previous namespace
+    list( $pluginName, $namespace ) = explode( ",", file_get_contents( 'namespace' ) );
+
+    // get additional path
+    $path = '';
+    if ( false !== strpos( $controllerName, '/' ) ) {
+      $parts          = explode( '/', $controllerName );
+      $controllerName = array_pop( $parts );
+      $path           = implode( '/', $parts ) . '/';
+      $namespacePath  = '\\' . implode( '\\', $parts );
+    }
+
+    // get the stub
+    $content = file_get_contents( "vendor/wpbones/src/Console/stubs/controller.stub" );
+    $content = str_replace( '{Namespace}', $namespace, $content );
+    $content = str_replace( '{ControllerName}', $controllerName, $content );
+
+    if ( ! empty( $path ) ) {
+      $content = str_replace( '{Path}', $namespacePath, $content );
+      mkdir( "plugin/Http/Controllers/{$path}", 0777, true );
+    }
+
+    $filename = sprintf( '%s.php', $controllerName );
+
+    file_put_contents( "plugin/Http/Controllers/{$path}{$filename}", $content );
+  }
+
   /**
    * Run subtask.
    * Check argv from console and execute a task.
@@ -360,6 +390,10 @@ class BonesCommandLine
     // migrate:create {table_name}
     elseif ( $this->option( 'migrate:create' ) ) {
       $this->migrateCreate( $argv[ 1 ] );
+    }
+    // make:controller {controller_name}
+    elseif ( $this->option( 'make:controller' ) ) {
+      $this->controllerCreate( $argv[ 1 ] );
     }
   }
 }
