@@ -4,7 +4,8 @@ namespace WPKirk\Http\Controllers\Dashboard;
 
 use WPKirk\Http\Controllers\Controller;
 
-class DashboardController extends Controller {
+class DashboardController extends Controller
+{
 
   public function firstMenu()
   {
@@ -21,6 +22,27 @@ class DashboardController extends Controller {
   public function optionsMenu()
   {
     return WPKirk()->view( 'dashboard.options' );
+  }
+
+  public function optionsView()
+  {
+    return WPKirk()->view( 'dashboard.optionsview' );
+  }
+
+  public function saveOptions()
+  {
+
+    var_dump( $_POST );
+
+    if ( $this->request->verifyNonce( 'Options' ) ) {
+
+      WPKirk()->options->update( $this->request->getAsOptions() );
+
+      return WPKirk()->view( 'dashboard.optionsview' )->with( 'feedback', 'Options updated!' );
+    }
+    else {
+      return WPKirk()->view( 'dashboard.optionsview' )->with( 'feedback', 'Action Not Allowed!' );
+    }
   }
 
 }
