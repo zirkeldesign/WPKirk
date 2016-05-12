@@ -31,9 +31,6 @@ class DashboardController extends Controller
 
   public function saveOptions()
   {
-
-    var_dump( $_POST );
-
     if ( $this->request->verifyNonce( 'Options' ) ) {
 
       WPKirk()->options->update( $this->request->getAsOptions() );
