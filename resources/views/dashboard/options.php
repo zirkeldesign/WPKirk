@@ -16,15 +16,23 @@
 
 
   <p>Get option <code>echo $plugin->options->get( 'General.option_2')
-      = <?php echo $plugin->options->get( 'General.option_2' ) ?></code></p>
+      = <?php echo $plugin->options->get( 'General.option_2' ) ?></code>
+  </p>
+
   <p>Get branch option <code>echo $plugin->options->get( 'General.option_3')
-      = <?php echo var_export( $plugin->options->get( 'General.option_3' ) ) ?></code></p>
+      = <?php echo var_export( $plugin->options->get( 'General.option_3' ) ) ?></code>
+  </p>
+
   <p>Get option <code>echo $plugin->options->get( 'General.option_3.sub_option_of_3')
-      = <?php echo $plugin->options->get( 'General.option_3.sub_option_of_3' ) ?></code></p>
+      = <?php echo $plugin->options->get( 'General.option_3.sub_option_of_3' ) ?></code>
+  </p>
+
   <p>Get default option <code>echo $plugin->options->get( 'General.doNotExists', 'default' )
-      = <?php echo $plugin->options->get( 'General.doNotExists', 'default' ) ?></code></p>
+      = <?php echo $plugin->options->get( 'General.doNotExists', 'default' ) ?></code>
+  </p>
 
   <h2>Update</h2>
+
   <p>Change <code>$plugin->options->set( 'Special.Name', 'John' );</code></p>
   <?php $plugin->options->set( 'Special.Name', 'John' ) ?>
   <pre><?php echo $plugin->options ?></pre>
