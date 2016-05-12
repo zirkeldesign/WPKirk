@@ -33,6 +33,15 @@
     </div>
 
     <div>
+      <label>General.option_2</label>
+      <input type="hidden" name="General/option_2" value="false" />
+      <input type="checkbox"
+             name="General/option_2"
+        <?php checked( 'true', $plugin->options->get( 'General.option_2' ) ) ?>
+             value="true"/>
+    </div>
+
+    <div>
       <label>Special.Name</label>
       <input type="text"
              name="Special/Name"
@@ -40,7 +49,15 @@
 
     </div>
 
-    <button class="button">Update</button>
+    <div>
+      <label>General/option_3/sub_option_of_3</label>
+      <input type="text"
+             name="General/option_3/sub_option_of_3"
+             value="<?php echo $plugin->options->get( 'General.option_3.sub_option_of_3' ) ?>"/>
+
+    </div>
+
+    <button class="button button-primary">Update</button>
 
   </form>
 
