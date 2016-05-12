@@ -18,8 +18,8 @@ return [
     'icon'       => '',
     'items'      => [
       [
-        "page_title" => "First sub menu title",
-        "menu_title" => "First sub menu Menu title",
+        "page_title" => "Main View",
+        "menu_title" => "Main View",
         'capability' => 'read',
         'icon'       => '',
         'route'      => [
@@ -27,8 +27,8 @@ return [
         ],
       ],
       [
-        "page_title" => "Second sub menu title",
-        "menu_title" => "Second sub menu Menu title",
+        "page_title" => "Ajax Example",
+        "menu_title" => "Ajax Example",
         'capability' => 'read',
         'icon'       => '',
         'route'      => [
