@@ -6,7 +6,7 @@
 |--------------------------------------------------------------------------
 |
 | Here is where you can register all of the menu routes for a plugin.
-| In this context the route are the menu link or hidden image.
+| In this context the route are the menu link.
 |
 */
 
