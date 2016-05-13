@@ -20,12 +20,12 @@
   <?php endif; ?>
 
   <form action="" method="post">
-    
+
     <?php wp_nonce_field( 'Options' ); ?>
 
     <div>
       <label>General.option_1</label>
-      <input type="hidden" name="General/option_1" value="false" />
+      <input type="hidden" name="General/option_1" value="false"/>
       <input type="checkbox"
              name="General/option_1"
         <?php checked( 'true', $plugin->options->get( 'General.option_1' ) ) ?>
@@ -34,7 +34,7 @@
 
     <div>
       <label>General.option_2</label>
-      <input type="hidden" name="General/option_2" value="false" />
+      <input type="hidden" name="General/option_2" value="false"/>
       <input type="checkbox"
              name="General/option_2"
         <?php checked( 'true', $plugin->options->get( 'General.option_2' ) ) ?>
@@ -60,6 +60,47 @@
     <button class="button button-primary">Update</button>
 
   </form>
+
+  <h2>Html</h2>
+
+  <div>
+    <p><code>echo Html::button( "Hello, world!" )</code></p>
+    <?php echo Html::button( "Hello, world!" ) ?>
+  </div>
+
+  <div>
+    <p><code>Html::button( "Hello, world!" )->html()</code></p>
+    <?php Html::button( "Hello, world!" )->html() ?>
+  </div>
+
+  <div>
+    <p><code>$button = Html::button( "Hello, world!" );</code></p>
+    <p><code>echo $button;</code></p>
+    <?php
+    $button = Html::button( "Hello, world!" );
+    echo $button; // or $button->html();
+    ?>
+  </div>
+
+  <div>
+    <p><code>echo Html::button( "Hello, world!" )->class( 'button')</code></p>
+    <?php echo Html::button( "Hello, world!" )->class( 'button' ) ?>
+  </div>
+
+  <div>
+    <p><code>echo Html::button( "Hello, world!" )->class( 'button button-primary')</code></p>
+    <?php echo Html::button( "Hello, world!" )->class( 'button button-primary' ) ?>
+  </div>
+
+  <div>
+    <p><code>echo Html::button( "Hello, world!" )->class( [ 'button', 'button-primary' ] )</code></p>
+    <?php echo Html::button( "Hello, world!" )->class( [ 'button', 'button-primary' ] ) ?>
+  </div>
+
+  <div>
+    <p><code>echo Html::button( [ 'content' => "Hello, world!", 'class' => 'button button-hero' ] )</code></p>
+    <?php echo Html::button( [ 'content' => "Hello, world!", 'class' => 'button button-hero' ] ) ?>
+  </div>
 
 
 </div>
