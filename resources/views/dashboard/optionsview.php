@@ -61,46 +61,4 @@
 
   </form>
 
-  <h2>Html</h2>
-
-  <div>
-    <p><code>echo Html::button( "Hello, world!" )</code></p>
-    <?php echo Html::button( "Hello, world!" ) ?>
-  </div>
-
-  <div>
-    <p><code>Html::button( "Hello, world!" )->html()</code></p>
-    <?php Html::button( "Hello, world!" )->html() ?>
-  </div>
-
-  <div>
-    <p><code>$button = Html::button( "Hello, world!" );</code></p>
-    <p><code>echo $button;</code></p>
-    <?php
-    $button = Html::button( "Hello, world!" );
-    echo $button; // or $button->html();
-    ?>
-  </div>
-
-  <div>
-    <p><code>echo Html::button( "Hello, world!" )->class( 'button')</code></p>
-    <?php echo Html::button( "Hello, world!" )->class( 'button' ) ?>
-  </div>
-
-  <div>
-    <p><code>echo Html::button( "Hello, world!" )->class( 'button button-primary')</code></p>
-    <?php echo Html::button( "Hello, world!" )->class( 'button button-primary' ) ?>
-  </div>
-
-  <div>
-    <p><code>echo Html::button( "Hello, world!" )->class( [ 'button', 'button-primary' ] )</code></p>
-    <?php echo Html::button( "Hello, world!" )->class( [ 'button', 'button-primary' ] ) ?>
-  </div>
-
-  <div>
-    <p><code>echo Html::button( [ 'content' => "Hello, world!", 'class' => 'button button-hero' ] )</code></p>
-    <?php echo Html::button( [ 'content' => "Hello, world!", 'class' => 'button button-hero' ] ) ?>
-  </div>
-
-
 </div>

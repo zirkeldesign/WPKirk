@@ -64,6 +64,15 @@ return [
           'resource' => 'Dashboard\DashboardResourceController',
         ],
       ],
+      [
+        "page_title" => "Html Tags",
+        "menu_title" => "Html Tags",
+        'capability' => 'read',
+        'icon'       => '',
+        'route'      => [
+          'get' => 'Dashboard\DashboardController@html',
+        ],
+      ],
     ]
   ]
 ];

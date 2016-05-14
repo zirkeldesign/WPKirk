@@ -29,6 +29,11 @@ class DashboardController extends Controller
     return WPKirk()->view( 'dashboard.optionsview' );
   }
 
+  public function html()
+  {
+    return WPKirk()->view( 'dashboard.html' );
+  }
+
   public function saveOptions()
   {
     if ( $this->request->verifyNonce( 'Options' ) ) {
