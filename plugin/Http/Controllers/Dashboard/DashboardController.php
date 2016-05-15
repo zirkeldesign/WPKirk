@@ -7,49 +7,8 @@ use WPKirk\Http\Controllers\Controller;
 class DashboardController extends Controller
 {
 
-  public function firstMenu()
+  public function index()
   {
-    return WPKirk()->view( 'dashboard.index' )->with( 'kirk', 'Captain' );
+    return WPKirk()->view( 'dashboard.index' );
   }
-
-  public function secondMenu()
-  {
-    return WPKirk()->view( 'dashboard.second' )
-                   ->styles( 'common' )
-                   ->footerScripts( 'main' );
-  }
-
-  public function optionsMenu()
-  {
-    return WPKirk()->view( 'dashboard.options' );
-  }
-
-  public function optionsView()
-  {
-    return WPKirk()->view( 'dashboard.optionsview' );
-  }
-
-  public function html()
-  {
-    return WPKirk()->view( 'dashboard.html' );
-  }
-
-  public function saveOptions()
-  {
-    if ( $this->request->verifyNonce( 'Options' ) ) {
-
-      WPKirk()->options->update( $this->request->getAsOptions() );
-
-      return WPKirk()->view( 'dashboard.optionsview' )->with( 'feedback', 'Options updated!' );
-    }
-    else {
-      return WPKirk()->view( 'dashboard.optionsview' )->with( 'feedback', 'Action Not Allowed!' );
-    }
-  }
-
-  public function customPage()
-  {
-    return WPKirk()->view( 'dashboard.custompage' )->with( 'method', $this->request->method );
-  }
-
 }
