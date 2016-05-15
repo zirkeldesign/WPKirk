@@ -24,7 +24,7 @@ return [
   |
   */
 
-  'custom_post_types' => [ \WPKirk\plugin\CustomPostTypes\MyCustomPostType::class ],
+  'custom_post_types' => [ ],
 
   /*
   |--------------------------------------------------------------------------
@@ -35,7 +35,7 @@ return [
   |
   */
 
-  'custom_taxonomy_types' => [ \WPKirk\plugin\CustomTaxonomyTypes\MyCustomTaxonomy::class ],
+  'custom_taxonomy_types' => [ ],
 
 
   /*
@@ -47,7 +47,7 @@ return [
   |
   */
 
-  'shortcodes' => [ \WPKirk\plugin\Shortcodes\MyShortcodes::class ],
+  'shortcodes' => [ ],
 
 
   /*
@@ -59,6 +59,6 @@ return [
   |
   */
 
-  'ajax' => [ \WPKirk\plugin\Ajax\MyAjax::class ],
+  'ajax' => [ ],
 
 ];

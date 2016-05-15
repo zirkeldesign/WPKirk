@@ -23,54 +23,7 @@ return [
         'capability' => 'read',
         'icon'       => '',
         'route'      => [
-          'get' => 'Dashboard\DashboardController@firstMenu'
-        ],
-      ],
-      [
-        "page_title" => "Ajax Example",
-        "menu_title" => "Ajax Example",
-        'capability' => 'read',
-        'icon'       => '',
-        'route'      => [
-          'get' => 'Dashboard\DashboardController@secondMenu'
-        ],
-      ],
-      [
-        "page_title" => "Options",
-        "menu_title" => "Options",
-        'capability' => 'read',
-        'icon'       => '',
-        'route'      => [
-          'get' => 'Dashboard\DashboardController@optionsMenu'
-        ],
-
-      ],
-      [
-        "page_title" => "Options View",
-        "menu_title" => "Options View",
-        'capability' => 'read',
-        'icon'       => '',
-        'route'      => [
-          'get'  => 'Dashboard\DashboardController@optionsView',
-          'post' => 'Dashboard\DashboardController@saveOptions'
-        ],
-      ],
-      [
-        "page_title" => "Options View Resource",
-        "menu_title" => "Options View Resource",
-        'capability' => 'read',
-        'icon'       => '',
-        'route'      => [
-          'resource' => 'Dashboard\DashboardResourceController',
-        ],
-      ],
-      [
-        "page_title" => "Html Tags",
-        "menu_title" => "Html Tags",
-        'capability' => 'read',
-        'icon'       => '',
-        'route'      => [
-          'get' => 'Dashboard\DashboardController@html',
+          'get' => 'Dashboard\DashboardController@index'
         ],
       ],
     ]

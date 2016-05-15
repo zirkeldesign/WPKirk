@@ -11,6 +11,4 @@
 |
 */
 
-return [
-  'sample' => 'Hello, Captain!'
-];
+return [ ];

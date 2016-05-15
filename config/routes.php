@@ -10,15 +10,4 @@
 |
 */
 
-return [
-
-  'custom_page' => [
-    'title'      => 'Title of page',
-    'capability' => 'read',
-    'route'      => [
-      'get' => 'Dashboard\DashboardController@customPage',
-      'post' => 'Dashboard\DashboardController@customPage',
-    ]
-  ]
-
-];
+return [ ];
