@@ -266,6 +266,7 @@ class BonesCommandLine
     $files = array_merge( $files, [
       'index.php',
       'composer.json',
+      'readme.txt',
     ] );
 
 
@@ -295,7 +296,7 @@ class BonesCommandLine
     // TODO check if the first time or if is time to install
 
     if ( ! isset( $argv[ 1 ] ) || empty( $argv[ 1 ] ) ) {
-      $namespace = $this->ask( 'Enter name of your plugin:' );
+      $name = $this->ask( 'Enter name of your plugin:' );
     }
     elseif ( isset( $argv[ 1 ] ) && "--help" === $argv[ 1 ] ) {
       $this->line( "\nUsage:" );
@@ -305,12 +306,12 @@ class BonesCommandLine
       exit( 0 );
     }
     else {
-      $namespace = $argv[ 1 ];
+      $name = $argv[ 1 ];
     }
 
     $res = `git clone -b develop https://github.com/gfazioli/WPBones.git vendor/wpbones`;
 
-    $this->rename( $namespace );
+    $this->rename( $name );
 
   }
 
