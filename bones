@@ -55,7 +55,7 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 class BonesCommandLine
 {
 
-  const VERSION = '0.1.14';
+  const VERSION = '0.1.15';
 
   public function __construct()
   {
@@ -98,7 +98,7 @@ class BonesCommandLine
     $this->line( "  install\t\tInstall a new WP Bones plugin" );
     $this->line( "  migrate:create\tCreate a new Migration" );
     $this->line( "  make:controller\tCreate a new Controller" );
-    $this->line( "  namespace\t\tSet or change the plugin namespace" );
+    $this->line( "  rename\t\tSet or change the plugin name" );
 
     echo "\n\n";
   }
@@ -222,13 +222,11 @@ class BonesCommandLine
   |
   */
 
-  protected function setNamespace( $namespace )
+  protected function rename( $pluginName )
   {
-    // plugin name
-    $pluginName = $namespace;
 
     // sanitize namespace
-    $namespace = str_replace( " ", "", $namespace );
+    $namespace = str_replace( " ", "", $pluginName );
 
     // previous namespace
     list( $previousPluginName, $previousNamespace ) = explode( ",", file_get_contents( 'namespace' ) );
@@ -286,7 +284,7 @@ class BonesCommandLine
     }
 
     // save new namespace
-    file_put_contents( 'namespace', $namespace );
+    file_put_contents( 'namespace', "{$pluginName},{$namespace}" );
 
     // run composer
     $res = `composer dump-autoload --optimize`;
@@ -307,12 +305,12 @@ class BonesCommandLine
       exit( 0 );
     }
     else {
-      $namespace = $argv[ 0 ];
+      $namespace = $argv[ 1 ];
     }
 
     $res = `git clone -b develop https://github.com/gfazioli/WPBones.git vendor/wpbones`;
 
-    $this->setNamespace( $namespace );
+    $this->rename( $namespace );
 
   }
 
@@ -378,9 +376,9 @@ class BonesCommandLine
       $this->help();
     }
     // namespace
-    elseif ( $this->option( 'namespace' ) ) {
+    elseif ( $this->option( 'rename' ) ) {
       if ( ! empty( $argv[ 1 ] ) ) {
-        $this->setNamespace( $argv[ 1 ] );
+        $this->rename( $argv[ 1 ] );
       }
     }
     // installe
