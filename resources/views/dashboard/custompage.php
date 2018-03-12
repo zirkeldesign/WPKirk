@@ -18,4 +18,11 @@
     <button class="button button-hero button-primary">Test Post</button>
   </form>
 
+  <h3>Second Custom page with only post</h3>
+
+  <form method="post" action="<?php echo $plugin->getPageUrl( 'second_custom_page' ) ?>">
+    <button class="button button-hero button-primary">Test Post</button>
+  </form>
+
+
 </div>

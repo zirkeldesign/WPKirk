@@ -4,7 +4,6 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "293afc555e79584c7c20757f07b7d4cf",
     "content-hash": "b97182a75cf2766b89893df13b9efeee",
     "packages": [
         {
@@ -45,7 +44,7 @@
                 "css",
                 "less"
             ],
-            "time": "2017-02-11 11:50:52"
+            "time": "2017-02-11T11:50:52+00:00"
         },
         {
             "name": "wpbones/pure-css-tabs",
@@ -85,20 +84,20 @@
                 "css",
                 "less"
             ],
-            "time": "2017-03-11 12:59:59"
+            "time": "2017-03-11T12:59:59+00:00"
         },
         {
             "name": "wpbones/wpbones",
-            "version": "0.8.35",
+            "version": "0.8.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wpbones/WPBones.git",
-                "reference": "104673c62e39f7f8b91c9dff714237999537d196"
+                "reference": "652564a4eed544d41ee5de41ab72c410d29bc06e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wpbones/WPBones/zipball/104673c62e39f7f8b91c9dff714237999537d196",
-                "reference": "104673c62e39f7f8b91c9dff714237999537d196",
+                "url": "https://api.github.com/repos/wpbones/WPBones/zipball/652564a4eed544d41ee5de41ab72c410d29bc06e",
+                "reference": "652564a4eed544d41ee5de41ab72c410d29bc06e",
                 "shasum": ""
             },
             "require": {
@@ -134,7 +133,7 @@
                 "wordpress",
                 "wpbones"
             ],
-            "time": "2017-03-12 12:29:08"
+            "time": "2018-03-12T12:28:46+00:00"
         },
         {
             "name": "wpbones/wptables",
@@ -173,7 +172,7 @@
                 "WP Bones",
                 "WP Table"
             ],
-            "time": "2017-01-07 12:12:44"
+            "time": "2017-01-07T12:12:44+00:00"
         }
     ],
     "packages-dev": [],

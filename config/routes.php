@@ -19,6 +19,14 @@ return [
       'get' => 'Dashboard\DashboardController@customPage',
       'post' => 'Dashboard\DashboardController@customPage',
     ]
-  ]
+  ],
+  'second_custom_page' => [
+    'title'      => 'Second',
+    'capability' => 'read',
+    'route'      => [
+      'post' => 'Dashboard\DashboardController@secondCustomPage',
+    ]
+  ],
+
 
 ];

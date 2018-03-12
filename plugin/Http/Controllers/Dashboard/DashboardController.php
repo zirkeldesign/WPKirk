@@ -92,4 +92,11 @@ class DashboardController extends Controller
                    ->with( 'method', $this->request->method );
   }
 
+  public function secondCustomPage()
+  {
+    return WPKirk()->view( 'dashboard.custompage' )
+                   ->withAdminStyles( 'wp-kirk-common' )
+                   ->with( 'method', $this->request->method );
+  }
+
 }
