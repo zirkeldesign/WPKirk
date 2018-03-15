@@ -4,7 +4,7 @@
  * Plugin Name: WP Kirk
  * Plugin URI: http://undolog.com
  * Description: WordPress plugin demo bases on WP Bones framework
- * Version: 0.8.36
+ * Version: 0.8.37
  * Author: Giovambattista Fazioli
  * Author URI: http://undolog.com
  * Text Domain: wp-kirk
