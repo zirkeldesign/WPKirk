@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b97182a75cf2766b89893df13b9efeee",
+    "content-hash": "102c9c08c954752d21b6065f45794e47",
     "packages": [
         {
             "name": "wpbones/pure-css-switch",
@@ -88,16 +88,16 @@
         },
         {
             "name": "wpbones/wpbones",
-            "version": "0.9.0",
+            "version": "0.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wpbones/WPBones.git",
-                "reference": "c7aa07ba7d8e175a4fd4dd85a87a5e3d90332869"
+                "reference": "c7b68359bf212abff95fb75faedd954b07032582"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wpbones/WPBones/zipball/c7aa07ba7d8e175a4fd4dd85a87a5e3d90332869",
-                "reference": "c7aa07ba7d8e175a4fd4dd85a87a5e3d90332869",
+                "url": "https://api.github.com/repos/wpbones/WPBones/zipball/c7b68359bf212abff95fb75faedd954b07032582",
+                "reference": "c7b68359bf212abff95fb75faedd954b07032582",
                 "shasum": ""
             },
             "require": {
@@ -133,7 +133,7 @@
                 "wordpress",
                 "wpbones"
             ],
-            "time": "2018-04-24T16:20:14+00:00"
+            "time": "2018-04-30T16:46:53+00:00"
         },
         {
             "name": "wpbones/wptables",
