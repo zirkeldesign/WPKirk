@@ -38,7 +38,7 @@ This version is built with [Webpack](https://webpack.js.org/) in order to provid
 In short, an example of a ReactJS application `app.jsx` which import a less style `styles.less`. This application uses a custom component `sample.jsx` which uses [styled-component](https://www.styled-components.com/). 
 For the `components` folder, you already will find the `alias` in the `webpack.config.js`. Anyway, feel free to configure the `package.json` and the `webpack.config.js` file as you want.
 
-The enque of the main script works as usual by using `withAdminScripts()` in the `/plugin/Http/Controllers/Dashboard/DashboardController.php`. For more infomation about that see the [complete docs here](http://wpbones.github.io/WPBones)
+The enque of the main script works as usual by using `withAdminScripts()` in the `/plugin/Http/Controllers/Dashboard/DashboardController.php`. For more infomation about that see the [complete docs here](https://github.com/wpbones/WPBones/wiki)
 
 ```php
 class DashboardController extends Controller
@@ -82,4 +82,4 @@ After changing of the namespace, you can start to develop you plugin. Your names
 
 ## Documentation
 
-You'll find the [complete docs here](http://wpbones.github.io/WPBones).
+You'll find the [complete docs here](https://github.com/wpbones/WPBones/wiki).
