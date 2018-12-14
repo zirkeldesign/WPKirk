@@ -1,5 +1,12 @@
 import React, {Component} from "react"
 
+import styled from "styled-components"
+
+const View = styled.div`
+  background-color: #fff;
+  text-align: center;
+`
+
 export default class MySample extends Component {
 
   constructor(props)
@@ -12,9 +19,9 @@ export default class MySample extends Component {
   render() {
 
     return (
-      <div>
-        <h2>I'm React Component</h2>
-      </div>
+      <View>
+        <h2>I'm a styled React Component</h2>
+      </View>
     )
   }
 }
