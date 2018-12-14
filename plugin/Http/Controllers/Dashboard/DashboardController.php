@@ -9,6 +9,7 @@ class DashboardController extends Controller
 
   public function index()
   {
-    return WPKirk()->view( 'dashboard.index' );
+    return WPKirk()->view( 'dashboard.index' )
+        ->withAdminScripts('main');
   }
 }

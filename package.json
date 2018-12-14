@@ -1,10 +1,36 @@
 {
-  "private": true,
+  "name": "WPKirk",
+  "version": "1.0.0",
+  "description": "A WPBones boilerplate Plugin",
+  "main": "index.js",
+  "repository": "https://github.com/wpbones/WPKirk.git",
+  "author": "gfazioli <giovambattista.fazioli@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "watch": "webpack --watch --mode development",
+    "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  },
   "devDependencies": {
-    "gulp": "~3.9.0",
-    "gulp-less": "~3.0.5",
-    "gulp-minify-css": "~1.2.1",
-    "gulp-rename": "~1.2.2",
-    "gulp-uglify": "~1.5.1"
+    "@babel/core": "^7.2.0",
+    "@babel/plugin-proposal-class-properties": "^7.2.1",
+    "@babel/plugin-syntax-object-rest-spread": "^7.2.0",
+    "@babel/plugin-transform-arrow-functions": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^2.0.0",
+    "file-loader": "^2.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
   }
 }
