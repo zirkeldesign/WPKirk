@@ -1,4 +1,4 @@
-# WP Kirk
+# WP Kirk for React
 
 [![Latest Stable Version](https://poser.pugx.org/wpbones/wpbones/v/stable)](https://packagist.org/packages/wpbones/wpbones)
 
@@ -13,17 +13,56 @@ As you know, WordPress doesn't support composer. So, I have used a little trick 
 
     $ curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
     
-### Nodes
+### Yarn
+
+First of all, you have to install [yarn](https://yarnpkg.com/en/). If you're using a Mac just run
     
-    $ sudo apt-get update && sudo apt-get install nodejs && sudo apt-get install npm
-    $ sudo apt-get install nodejs-legacy
+    $ brew install yarn
     
+For different OS please follow the instruction [here](https://yarnpkg.com/en/docs/install)    
+    
+## Overview
 
-### Gulp
+This version is built with [Webpack](https://webpack.js.org/) in order to provides support for [ReactJS](https://reactjs.org/). In this boilerplate you'll find
 
-You will find a `package.json` with a few package such as `gulp`. Feel free to add your own.
+```txt
+ resources/
+   assets/
+     jsx/
+       app.jsx
+       styles.less
+     components/
+       sample.jsx
+```       
 
-    $ npm install 
+In short, an example of a ReactJS application `app.jsx` which import a less style `styles.less`. This application uses a custom component `sample.jsx` which uses [styled-component](https://www.styled-components.com/). 
+For the `components` folder, you already will find the `alias` in the `webpack.config.js`. Anyway, feel free to configure the `package.json` and the `webpack.config.js` file as you want.
+
+The enque of the main script works as usual by using `withAdminScripts()` in the `/plugin/Http/Controllers/Dashboard/DashboardController.php`. For more infomation about that see the [complete docs here](http://wpbones.github.io/WPBones)
+
+```php
+class DashboardController extends Controller
+{
+
+  public function index()
+  {
+    return WPKirk()->view( 'dashboard.index' )
+        ->withAdminScripts('main');
+  }
+}
+```
+    
+### Get started
+
+    $ yarn
+    
+### Compiling
+
+    $ yarn dev
+    
+probably, during the develop, you'll use
+
+    $ yarn watch
 
 ## I love Laravel
 
