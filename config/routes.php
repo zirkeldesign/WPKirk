@@ -27,6 +27,4 @@ return [
       'post' => 'Dashboard\DashboardController@secondCustomPage',
     ]
   ],
-
-
 ];
