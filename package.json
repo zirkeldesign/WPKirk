@@ -1,6 +1,6 @@
 {
   "name": "WPKirk",
-  "version": "1.0.0",
+  "version": "dev-reactjs",
   "description": "A WPBones boilerplate Plugin",
   "main": "index.js",
   "repository": "https://github.com/wpbones/WPKirk.git",
