@@ -32,14 +32,9 @@
     ]
   },
   "scripts": {
-      "post-install-cmd": [
-        "php -r \"copy('vendor/wpbones/wpbones/src/Console/bin/bones', 'bones');\""
-      ],
-      "post-update-cmd": [
-        "php -r \"copy('vendor/wpbones/wpbones/src/Console/bin/bones', 'bones');\""
-      ],
-      "post-autoload-dump": [
-        "php bones rename"
-      ]
-    }
+    "post-autoload-dump": [
+      "php -r \"copy('vendor/wpbones/wpbones/src/Console/bin/bones', 'bones');\"",
+      "php bones rename"
+    ]
+  }
 }
