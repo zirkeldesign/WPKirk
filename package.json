@@ -1,5 +1,5 @@
 {
-  "name": "WPKirk",
+  "name": "wpkirk",
   "version": "dev-reactjs",
   "description": "A WPBones boilerplate Plugin",
   "main": "index.js",
@@ -7,7 +7,7 @@
   "author": "gfazioli <giovambattista.fazioli@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack --mode development",
+    "dev": "w ebpack --mode development",
     "watch": "webpack --watch --mode development",
     "build": "webpack --mode production"
   },
