@@ -19,7 +19,7 @@ if (version_compare(PHP_VERSION, WPBONES_MINIMAL_PHP_VERSION) < 0) {
 | We have to load the WordPress environment.
 |
 */
-if (! file_exists(__DIR__ . '/../../../wp-load.php')) {
+if (!file_exists(__DIR__ . '/../../../wp-load.php')) {
     echo "\n\033[33;5;82mWarning!!\n";
     echo "\n\033[38;5;82m\t" . 'You must be inside "wp-content/plugins/" folders';
     echo "\033[0m\n\n";
@@ -144,12 +144,12 @@ class BonesCommandLine
         $this->info("Usage:\n");
         $this->line(" command [options] [arguments]");
         $this->info("\nAvailable commands:");
-        $this->line(" tinker                  Interact with your application");
         $this->line(" deploy                  Create a deploy version");
         $this->line(" install                 Install a new WP Bones plugin");
         $this->line(" optimize                Run composer dump-autoload with -o option");
         $this->line(" rename                  Set or change the plugin name");
         $this->line(" require                 Install a WP Bones package");
+        $this->line(" tinker                  Interact with your application");
         $this->line(" update                  Update the Framework");
         $this->line("migrate");
         $this->line(" migrate:create          Create a new Migration");
@@ -200,7 +200,7 @@ class BonesCommandLine
 
     protected function option($option)
     {
-        $argv = $_SERVER[ 'argv' ];
+        $argv = $_SERVER['argv'];
 
         // strip the application name (bones)
         array_shift($argv);
@@ -232,8 +232,8 @@ class BonesCommandLine
          * @brief get all matched files
          * @note  Internal recursive use only
          *
-         * @param string $path    Folder root
-         * @param string $match   Optional. Regex to apply on file name. For example use '/^.*\.(php)$/i' to get only php file
+         * @param string  $path   Folder root
+         * @param string  $match  Optional. Regex to apply on file name. For example use '/^.*\.(php)$/i' to get only php file
          * @param array  &$result Optional. Result array. Empty form first call
          *
          * @return array
@@ -248,7 +248,7 @@ class BonesCommandLine
                         if ($continue) {
                             _rglob($file, $match, $result);
                         }
-                    } elseif (! empty($match)) {
+                    } elseif (!empty($match)) {
                         $continue = true; //apply_filters( 'wpdk_rglob_find_file', true, $file );
                         if (false == $continue) {
                             break;
@@ -257,8 +257,8 @@ class BonesCommandLine
                         $error         = preg_match($match, $file, $regexp_result);
                         if (0 !== $error || false !== $error) {
                             $regexp_result = true; //apply_filters( 'wpdk_rglob_matched', $regexp_result, $file, $match );
-                            if (! empty($regexp_result)) {
-                                $result[] = $regexp_result[ 0 ];
+                            if (!empty($regexp_result)) {
+                                $result[] = $regexp_result[0];
                             }
                         }
                     } else {
@@ -384,16 +384,16 @@ class BonesCommandLine
     {
         // TODO check if the first time or if is time to install
 
-        if (! isset($argv[ 1 ]) || empty($argv[ 1 ])) {
+        if (!isset($argv[1]) || empty($argv[1])) {
             $name = $this->ask('Enter name of your plugin:');
-        } elseif (isset($argv[ 1 ]) && "--help" === $argv[ 1 ]) {
+        } elseif (isset($argv[1]) && "--help" === $argv[1]) {
             $this->line("\nUsage:");
             $this->info("  install <plugin name>\n");
             $this->line("Arguments:");
             $this->info("  plugin name\tThe name of plugin. Add quotes if the plugin name containes spaces.");
             exit(0);
         } else {
-            $name = $argv[ 1 ];
+            $name = $argv[1];
         }
 
         // update composer module
@@ -433,7 +433,7 @@ class BonesCommandLine
             exit(0);
         }
 
-        if (! empty($path)) {
+        if (!empty($path)) {
             // alternative method to customize the deploy
             include 'deploy.php';
 
@@ -449,6 +449,7 @@ class BonesCommandLine
                 'deploy.php',
                 'composer.json',
                 'composer.lock',
+                'namespace',
                 'gulpfile.js',
                 'package.json',
                 'package-lock.json',
@@ -509,7 +510,7 @@ class BonesCommandLine
             }
 
             $this->line(eval($eval));
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $this->info(eval($e->getMessage()));
         } finally {
             $this->tinker();
@@ -552,14 +553,14 @@ class BonesCommandLine
         }
 
         // Make destination directory
-        if (! is_dir($dest)) {
+        if (!is_dir($dest)) {
             mkdir($dest, $permissions);
         }
 
         // Loop through the folder
         $dir = dir($source);
         while(false !== $entry = $dir->read()) {
-// files and folder to skip
+            // files and folder to skip
             if ($this->skip($entry)) {
                 continue;
             }
@@ -576,7 +577,7 @@ class BonesCommandLine
 
     protected function skip($entry)
     {
-        return in_array($entry,$this->skipWhenDeploy);
+        return in_array($entry, $this->skipWhenDeploy);
     }
 
     protected function createMigrate($tablename)
@@ -589,8 +590,8 @@ class BonesCommandLine
         }
 
         $filename = sprintf('%s_create_%s_table.php',
-                            date('Y_m_d_His'),
-                            strtolower($tablename));
+            date('Y_m_d_His'),
+            strtolower($tablename));
 
         // previous namespace
         list($pluginName, $namespace) = explode(",", file_get_contents('namespace'));
@@ -638,7 +639,7 @@ class BonesCommandLine
         $content = str_replace('{Name}', $name, $content);
         $content = str_replace('{Plural}', $plural, $content);
 
-        if (! is_dir('plugin/CustomPostTypes')) {
+        if (!is_dir('plugin/CustomPostTypes')) {
             mkdir("plugin/CustomPostTypes", 0777, true);
         }
 
@@ -687,7 +688,7 @@ class BonesCommandLine
         $content = str_replace('{Plural}', $plural, $content);
         $content = str_replace('{ObjectType}', $objectType, $content);
 
-        if (! is_dir('plugin/CustomTaxonomyTypes')) {
+        if (!is_dir('plugin/CustomTaxonomyTypes')) {
             mkdir("plugin/CustomTaxonomyTypes", 0777, true);
         }
 
@@ -725,7 +726,7 @@ class BonesCommandLine
         $content = str_replace('{Namespace}', $namespace, $content);
         $content = str_replace('{ClassName}', $className, $content);
 
-        if (! empty($path)) {
+        if (!empty($path)) {
             $content = str_replace('{Path}', $namespacePath, $content);
             mkdir("plugin/Http/Controllers/{$path}", 0777, true);
         } else {
@@ -768,7 +769,7 @@ class BonesCommandLine
         $content = str_replace('{Signature}', $signature, $content);
         $content = str_replace('{CommandName}', $command, $content);
 
-        if (! is_dir('plugin/Console/Commands')) {
+        if (!is_dir('plugin/Console/Commands')) {
             mkdir("plugin/Console/Commands", 0777, true);
         }
 
@@ -811,7 +812,7 @@ class BonesCommandLine
         $content = str_replace('{Namespace}', $namespace, $content);
         $content = str_replace('{ClassName}', $className, $content);
 
-        if (! is_dir('plugin/Shortcodes')) {
+        if (!is_dir('plugin/Shortcodes')) {
             mkdir("plugin/Shortcodes", 0777, true);
         }
 
@@ -842,7 +843,7 @@ class BonesCommandLine
         $content = str_replace('{Namespace}', $namespace, $content);
         $content = str_replace('{ClassName}', $className, $content);
 
-        if (! is_dir('plugin/Providers')) {
+        if (!is_dir('plugin/Providers')) {
             mkdir("plugin/Providers", 0777, true);
         }
 
@@ -874,7 +875,7 @@ class BonesCommandLine
         $content = str_replace('{PluginName}', $pluginName, $content);
         $content = str_replace('{Slug}', $slug, $content);
 
-        if (! is_dir('plugin/Widgets')) {
+        if (!is_dir('plugin/Widgets')) {
             mkdir("plugin/Widgets", 0777, true);
         }
 
@@ -882,7 +883,7 @@ class BonesCommandLine
 
         $this->line(" Created plugin/Widgets/{$filename}");
 
-        if (! is_dir('resources/views/widgets')) {
+        if (!is_dir('resources/views/widgets')) {
             mkdir("resources/views/widgets", 0777, true);
         }
 
@@ -914,7 +915,7 @@ class BonesCommandLine
         $content = str_replace('{Namespace}', $namespace, $content);
         $content = str_replace('{ClassName}', $className, $content);
 
-        if (! is_dir('plugin/Ajax')) {
+        if (!is_dir('plugin/Ajax')) {
             mkdir("plugin/Ajax", 0777, true);
         }
 
@@ -935,16 +936,16 @@ class BonesCommandLine
      */
     protected function handle()
     {
-        $argv = $_SERVER[ 'argv' ];
+        $argv = $_SERVER['argv'];
 
         // strip the application name
         array_shift($argv);
 
-        if (empty($argv) || (isset($argv[ 0 ]) && "--help" === $argv[ 0 ])) {
+        if (empty($argv) || (isset($argv[0]) && "--help" === $argv[0])) {
             $this->help();
         } // namespace
         elseif ($this->option('rename')) {
-            $this->rename($argv[ 1 ]);
+            $this->rename($argv[1]);
         } // install
         elseif ($this->option('install')) {
             $this->install($argv);
@@ -953,7 +954,7 @@ class BonesCommandLine
             $this->update();
         } // Deploy
         elseif ($this->option('deploy')) {
-            $this->deploy($argv[ 1 ]);
+            $this->deploy($argv[1]);
         } // Optimize
         elseif ($this->option('optimize')) {
             $this->optimize();
@@ -962,34 +963,34 @@ class BonesCommandLine
             $this->tinker();
         } // Require
         elseif ($this->option('require')) {
-            $this->requirePackage($argv[ 1 ]);
+            $this->requirePackage($argv[1]);
         } // migrate:create {table_name}
         elseif ($this->option('migrate:create')) {
-            $this->createMigrate($argv[ 1 ]);
+            $this->createMigrate($argv[1]);
         } // make:controller {controller_name}
         elseif ($this->option('make:controller')) {
-            $this->createController($argv[ 1 ]);
+            $this->createController($argv[1]);
         } // make:console {command_name}
         elseif ($this->option('make:console')) {
-            $this->createCommand($argv[ 1 ]);
+            $this->createCommand($argv[1]);
         } // make:cpy {className}
         elseif ($this->option('make:cpt')) {
-            $this->createCustomPostType($argv[ 1 ]);
+            $this->createCustomPostType($argv[1]);
         } // make:shortocde {className}
         elseif ($this->option('make:shortcode')) {
-            $this->createShortcode($argv[ 1 ]);
+            $this->createShortcode($argv[1]);
         } // make:provider {className}
         elseif ($this->option('make:provider')) {
-            $this->createProvider($argv[ 1 ]);
+            $this->createProvider($argv[1]);
         } // make:ajax {className}
         elseif ($this->option('make:ajax')) {
-            $this->createAjax($argv[ 1 ]);
+            $this->createAjax($argv[1]);
         } // make:ctt {className}
         elseif ($this->option('make:ctt')) {
-            $this->createCustomTaxonomyType($argv[ 1 ]);
+            $this->createCustomTaxonomyType($argv[1]);
         } // make:widget {className}
         elseif ($this->option('make:widget')) {
-            $this->createWidget($argv[ 1 ]);
+            $this->createWidget($argv[1]);
         } else {
             $extended = false;
 
@@ -997,7 +998,7 @@ class BonesCommandLine
                 $extended = $this->kernel->handle($argv);
             }
 
-            if (! $extended) {
+            if (!$extended) {
                 $this->info("\nUnknown command! Use --help for commands list\n");
             }
         }
