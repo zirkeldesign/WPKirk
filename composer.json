@@ -17,8 +17,8 @@
     "source": "https://github.com/wpbones/WPKirk/"
   },
   "require": {
-    "php": ">=5.5.9",
-    "wpbones/wpbones": "~0.9",
+    "php": ">=7.1",
+    "wpbones/wpbones": "dev-master",
     "wpbones/pure-css-tabs": "~1.0",
     "wpbones/pure-css-switch": "~1.0",
     "wpbones/wptables": "~1.0"
@@ -30,5 +30,14 @@
     "files": [
       "functions.php"
     ]
-  }
+  },
+  "scripts": {
+      "post-install-cmd": [
+        "php -r \"copy('vendor/wpbones/wpbones/src/Console/bin/bones', 'bones');\""
+      ],
+      "post-update-cmd": [
+        "php -r \"copy('vendor/wpbones/wpbones/src/Console/bin/bones', 'bones');\"",
+        "php bones rename"
+      ]
+    }
 }

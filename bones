@@ -65,7 +65,7 @@ class BonesCommandLine
     /**
      * WP Bones version
      */
-    const VERSION = '0.9.9';
+    const VERSION = '0.9.12';
 
     /**
      * Plugin name.
@@ -87,6 +87,13 @@ class BonesCommandLine
      * @var null
      */
     protected $kernel = null;
+
+    /**
+     * List of files and folders to skip during the deploy.
+     *
+     * @var array
+     */
+    protected $skipWhenDeploy = [];
 
     public function __construct()
     {
@@ -137,6 +144,7 @@ class BonesCommandLine
         $this->info("Usage:\n");
         $this->line(" command [options] [arguments]");
         $this->info("\nAvailable commands:");
+        $this->line(" tinker                  Interact with your application");
         $this->line(" deploy                  Create a deploy version");
         $this->line(" install                 Install a new WP Bones plugin");
         $this->line(" optimize                Run composer dump-autoload with -o option");
@@ -392,9 +400,9 @@ class BonesCommandLine
         $res = `composer update`;
 
         // copy bones
-        $res = rename('vendor/wpbones/wpbones/src/Console/bin/bones', 'bones');
+        //$res = rename('vendor/wpbones/wpbones/src/Console/bin/bones', 'bones');
 
-        $this->rename($name);
+        //$this->rename($name);
 
     }
 
@@ -402,19 +410,13 @@ class BonesCommandLine
     {
         // we have to remove previous version
         //$res = `rm -rf vendor/`;
-        $this->deleteDirectory('vendor');
-
-        // clone the last version
-        $res = `git clone -b master https://github.com/wpbones/WPBones.git vendor/wpbones/wpbones`;
+        //$this->deleteDirectory('vendor');
 
         // update composer module
         $res = `composer update`;
 
-        // copy bones
-        $res = rename('vendor/wpbones/wpbones/src/Console/bin/bones', 'bones');
-
         // rename as is it and execute composer
-        $this->rename();
+        //$this->rename();
     }
 
     protected function deploy($path)
@@ -432,33 +434,35 @@ class BonesCommandLine
         }
 
         if (! empty($path)) {
-            $this->xcopy(__DIR__, $path);
+            // alternative method to customize the deploy
+            include 'deploy.php';
 
-            $this->deleteDirectory("{$path}/resources/assets");
-
-            // this path shouldn't exist! we will try to delete it anyway
-            $this->deleteDirectory("{$path}/.git");
-
-            $files = [
+            // files and folders to skip
+            $this->skipWhenDeploy = [
+                '.',
+                '..',
+                'node_modules',
+                '.git',
                 '.gitignore',
                 '.DS_Store',
                 'bones',
+                'deploy.php',
                 'composer.json',
                 'composer.lock',
                 'gulpfile.js',
-                'namespace',
                 'package.json',
                 'package-lock.json',
+                'yarn.lock',
                 'README.md',
-                'readme.md',
+                'webpack.mix.js',
+                'phpcs.xml.dist',
+                'mix-manifest.json',
             ];
 
-            array_map(
-                function ($file) use ($path) {
-                    @unlink("{$path}/{$file}");
-                },
-                $files
-            );
+            $this->skipWhenDeploy = apply_filters('wpbones_console_deploy_skip', $this->skipWhenDeploy);
+
+            $this->xcopy(__DIR__, $path);
+
         }
 
         /**
@@ -555,8 +559,8 @@ class BonesCommandLine
         // Loop through the folder
         $dir = dir($source);
         while(false !== $entry = $dir->read()) {
-            // Skip pointers
-            if ($entry == '.' || $entry == '..' || false !== strpos($entry, 'node_modules') || false !== strpos($entry, '.git')) {
+// files and folder to skip
+            if ($this->skip($entry)) {
                 continue;
             }
 
@@ -568,6 +572,11 @@ class BonesCommandLine
         $dir->close();
 
         return true;
+    }
+
+    protected function skip($entry)
+    {
+        return in_array($entry,$this->skipWhenDeploy);
     }
 
     protected function createMigrate($tablename)
@@ -935,9 +944,7 @@ class BonesCommandLine
             $this->help();
         } // namespace
         elseif ($this->option('rename')) {
-            if (! empty($argv[ 1 ])) {
-                $this->rename($argv[ 1 ]);
-            }
+            $this->rename($argv[ 1 ]);
         } // install
         elseif ($this->option('install')) {
             $this->install($argv);
