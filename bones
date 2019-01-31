@@ -20,7 +20,7 @@ class BonesCommandLine
     /**
      * WP Bones version
      */
-    const VERSION = '0.9.21';
+    const VERSION = '0.9.23';
 
     /**
      * Plugin name.
@@ -234,9 +234,9 @@ class BonesCommandLine
         $this->line(" require                 Install a WP Bones package");
         $this->line(" tinker                  Interact with your application");
         $this->line(" update                  Update the Framework");
-        $this->line("migrate");
+        $this->info("migrate");
         $this->line(" migrate:create          Create a new Migration");
-        $this->line("make");
+        $this->info("make");
         $this->line(" make:ajax               Create a new Ajax Service Provider");
         $this->line(" make:controller         Create a new Controller");
         $this->line(" make:console            Create a new Bones command");
@@ -426,7 +426,8 @@ class BonesCommandLine
 
         // remove all composer
         $files = array_filter(array_map(function ($e) {
-            if (false !== strpos($e, "node_modules")) {
+            if (false !== strpos($e, "node_modules") ||
+                false !== strpos($e, "vendor/wpbones/wpbones/src/Console/bin/bones")) {
                 return false;
             }
 
@@ -439,7 +440,6 @@ class BonesCommandLine
             'composer.json',
             'readme.txt',
         ]);
-
 
         // change namespace
         foreach ($files as $file) {
