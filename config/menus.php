@@ -83,6 +83,12 @@ return [
                     'get' => 'ExampleTableController@indexSearchExample',
                 ],
             ],
+            [
+                "menu_title" => "User Agent",
+                'route' => [
+                    'get' => 'ExampleUserAgentController@index',
+                ],
+            ],
         ],
     ],
 ];

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4b8bfa6b3fa4c4ae1f32d29a0efe096f",
+    "content-hash": "c17392a08529f57042abde48bee4fff9",
     "packages": [
         {
             "name": "wpbones/pure-css-switch",
@@ -87,17 +87,59 @@
             "time": "2017-03-11T12:59:59+00:00"
         },
         {
+            "name": "wpbones/useragent",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wpbones/useragent.git",
+                "reference": "13be7b1a9e33e2943cc9d1f7ba27561a87e2fabb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wpbones/useragent/zipball/13be7b1a9e33e2943cc9d1f7ba27561a87e2fabb",
+                "reference": "13be7b1a9e33e2943cc9d1f7ba27561a87e2fabb",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WPKirk\\UserAgent\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Giovambattista Fazioli",
+                    "email": "giovambattista.fazioli@gmail.com",
+                    "homepage": "http://undolog.com"
+                }
+            ],
+            "description": "An useful method to detect the useragent",
+            "homepage": "https://github.com/wpbones/useragent",
+            "keywords": [
+                "WP Bones",
+                "user agent"
+            ],
+            "time": "2019-01-31T15:46:11+00:00"
+        },
+        {
             "name": "wpbones/wpbones",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wpbones/WPBones.git",
-                "reference": "5228713c4e7ab0216a76387153016ad713cb6304"
+                "reference": "3a04559088a494bb56a1edc400a5060a17dfb5b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wpbones/WPBones/zipball/5228713c4e7ab0216a76387153016ad713cb6304",
-                "reference": "5228713c4e7ab0216a76387153016ad713cb6304",
+                "url": "https://api.github.com/repos/wpbones/WPBones/zipball/3a04559088a494bb56a1edc400a5060a17dfb5b0",
+                "reference": "3a04559088a494bb56a1edc400a5060a17dfb5b0",
                 "shasum": ""
             },
             "require": {
@@ -133,7 +175,7 @@
                 "wordpress",
                 "wpbones"
             ],
-            "time": "2019-01-15T11:32:50+00:00"
+            "time": "2019-01-31T13:58:11+00:00"
         },
         {
             "name": "wpbones/wptables",
