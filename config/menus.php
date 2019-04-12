@@ -89,6 +89,12 @@ return [
                     'get' => 'ExampleUserAgentController@index',
                 ],
             ],
+            [
+                "menu_title" => "Database",
+                'route' => [
+                    'get' => 'ExampleDatabaseController@index',
+                ],
+            ],
         ],
     ],
 ];
