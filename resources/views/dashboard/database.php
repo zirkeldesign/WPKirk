@@ -69,5 +69,5 @@ Product::all()->each(function ($e) {
 ?>
 </pre>
 
-  <p>You'll find more details <a target="_blank" href="https://laravel.com/docs/5.8/eloquent">Here</a></p>
+  <p>For further documentation on using the various database facilities this library provides, consult the <a target="_blank" href="https://laravel.com/docs/5.8/eloquent">Laravel framework documentation</a></p>
 </div>
