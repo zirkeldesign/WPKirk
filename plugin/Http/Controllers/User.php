@@ -29,6 +29,6 @@ class User extends Model
     {
         global $wpdb;
 
-        return $wpdb->prefix . parent::getTable();
+        return $wpdb->prefix . preg_replace('/[[:<:]]' . $wpdb->prefix . '/', '', parent::getTable(), 1);
     }
 }

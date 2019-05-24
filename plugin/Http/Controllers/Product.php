@@ -7,17 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     /**
+     * Disable Illuminate timestamp columns.
+     *
+     * @var boolean
+     */
+    public $timestamps = false;
+    /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'products';
-
     /**
-      * The primary key for the model.
-      *
-      * @var string
-      */
+     * The primary key for the model.
+     *
+     * @var string
+     */
     protected $primaryKey = 'log_id';
 
     /**
@@ -29,6 +34,9 @@ class Product extends Model
     {
         global $wpdb;
 
-        return $wpdb->prefix . parent::getTable();
+        return $wpdb->prefix . preg_replace('/[[:<:]]' . $wpdb->prefix . '/', '', parent::getTable(), 1);
+
     }
+
+
 }
