@@ -31,7 +31,7 @@ class MyWidget extends Widget
    * @var array
    */
   public $widget_options = [
-    'deccription' => 'WP Kirk Demo Widget Description'
+    'description' => 'WP Kirk Demo Widget Description'
   ];
 
   /**
