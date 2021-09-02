@@ -5,9 +5,12 @@
  * To do this, you have to use the right naming for the css id and class.
  *
  */
+.wp-kirk.wp-kirk-sample p {
+  font-size: 16px;
+}
 .wp-kirk code,
 .wp-kirk pre {
-  background-color: #32373C;
+  background-color: #32373c;
   color: #f9cf6a;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;

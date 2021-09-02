@@ -1,4 +1,4 @@
-<div class="wrap wp-kirk">
+<div class="wrap wp-kirk wp-kirk-sample">
 
   <h2>Package sample</h2>
 
@@ -20,7 +20,7 @@ $ php bones require wpbones/pure-css-tabs
   <div class="wpbones-tabs">
 
     <!-- first tab -->
-    <?php WPKirk\PureCSSTabs\PureCSSTabsProvider::openTab( 'Database', null, true ) ?>
+    <?php WPKirk\PureCSSTabs\PureCSSTabsProvider::openTab('Database', null, true) ?>
 
     <div>
       <h3>Content for Database</h3>
@@ -29,7 +29,7 @@ $ php bones require wpbones/pure-css-tabs
     <?php WPKirk\PureCSSTabs\PureCSSTabsProvider::closeTab() ?>
 
     <!-- second tab -->
-    <?php WPKirk\PureCSSTabs\PureCSSTabsProvider::openTab( 'Posts' ) ?>
+    <?php WPKirk\PureCSSTabs\PureCSSTabsProvider::openTab('Posts') ?>
 
     <div>
       <h3>Content for Posts</h3>
@@ -41,9 +41,10 @@ $ php bones require wpbones/pure-css-tabs
 
   </div>
 
-  <p>* The tabs are <strong>responsive</strong>, try to resize your browser and you'll see them switch to accordion layout</p>
+  <p>* The tabs are <strong>responsive</strong>, try to resize your browser and you'll see them switch to accordion
+    layout</p>
 
-  <hr/>
+  <hr />
 
   <h2>Pure CSS Switch Button</h2>
 
@@ -58,40 +59,38 @@ $ php bones require wpbones/pure-css-switch
 
   <pre>echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name( 'test-switch-1' )</pre>
   <p>
-    <?php echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name( 'test-switch-1' ) ?>
+    <?php echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name('test-switch-1') ?>
   </p>
 
   <pre>echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name( 'test-switch-2' )->left_label( 'Swipe me' )</pre>
   <p>
-    <?php echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name( 'test-switch-2' )->left_label( 'Swipe me' ) ?>
+    <?php echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name('test-switch-2')->left_label('Swipe me') ?>
   </p>
 
   <pre>echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name( 'test-switch-3' )->right_label( 'Swipe me' )</pre>
   <p>
-    <?php echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name( 'test-switch-3' )->right_label( 'Swipe me' ) ?>
+    <?php echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name('test-switch-3')->right_label('Swipe me') ?>
   </p>
 
   <pre>echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name( 'test-switch-4' )->left_label( 'Swipe me' )->right_label( 'Swipe me' )</pre>
   <p>
-    <?php echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name( 'test-switch-4' )->left_label( 'Swipe me' )->right_label( 'Swipe me' ) ?>
+    <?php echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name('test-switch-4')->left_label('Swipe me')->right_label('Swipe me') ?>
   </p>
 
   <pre>echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name( 'test-switch-5' )->left_label( 'Swipe me' )->checked( true )</pre>
   <div>
-    <form method="post"
-          action="">
-      <?php echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name( 'test-switch-5' )->left_label( 'Swipe me' )->checked( true ) ?>
+    <form method="post" action="">
+      <?php echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name('test-switch-5')->left_label('Swipe me')->checked(true) ?>
       <div style="text-align: right;">
-        <button type="submit"
-                class="button button-primary">Send Post
+        <button type="submit" class="button button-primary">Send Post
         </button>
       </div>
     </form>
 
-    <?php if( isset( $_POST ) && ! empty( $_POST ) ) : ?>
+    <?php if (isset($_POST) && ! empty($_POST)) : ?>
 
-      <pre>
-        <?php var_dump( $_POST ) ?>
+    <pre>
+        <?php var_dump($_POST) ?>
       </pre>
 
     <?php endif; ?>
@@ -100,20 +99,19 @@ $ php bones require wpbones/pure-css-switch
 
   <pre>echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name( 'test-switch-6' )->left_label( 'Swipe me' )->disabled( true )</pre>
   <p>
-    <?php echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name( 'test-switch-6' )->left_label( 'Swipe me' )->disabled( true ) ?>
+    <?php echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name('test-switch-6')->left_label('Swipe me')->disabled(true) ?>
   </p>
 
   <pre>echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name( 'test-switch-7' )->theme( 'flat-square' )</pre>
   <p>
-    <?php echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name( 'test-switch-7' )->theme( 'flat-square' ) ?>
+    <?php echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name('test-switch-7')->theme('flat-square') ?>
   </p>
 
   <p>Mode select (default is <code>switch</code>)</p>
   <pre>echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name( 'test-switch-8' )->left_label( 'Turn left' )->right_label( 'Turn right' )->mode( 'select' )</pre>
   <p>
-    <?php echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name( 'test-switch-8' )->left_label( 'Turn left' )->right_label( 'Turn right' )->mode( 'select' ) ?>
+    <?php echo WPKirk\PureCSSSwitch\Html\HtmlTagSwitchButton::name('test-switch-8')->left_label('Turn left')->right_label('Turn right')->mode('select') ?>
   </p>
 
 
 </div>
-

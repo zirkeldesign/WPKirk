@@ -13,9 +13,18 @@ use WPKirk\Http\Controllers\User;
 
 ?>
 
-<div class="wp-kirk wrap">
+<div class="wp-kirk wrap wp-kirk-sample">
 
   <h1>Eloquent ORM</h1>
+  <p>The Eloquent ORM included with WP Bones provides a beautiful, simple ActiveRecord implementation for working with
+    your database. Each database table has a corresponding "Model" which is used to interact with that table. Models
+    allow you to query for data in your tables, as well as insert new records into the table.
+  </p>
+
+  <p>Since WP Bones use the complete illuminate database package, for further documentation on using the various
+    database facilities this library provides, consult the <a href="https://laravel.com/docs/8.x/eloquent">Laravel
+      framework documentation</a></p>
+
 
   <h2>Query WordPress users table</h2>
 
@@ -69,5 +78,6 @@ Product::all()->each(function ($e) {
 ?>
 </pre>
 
-  <p>For further documentation on using the various database facilities this library provides, consult the <a target="_blank" href="https://laravel.com/docs/5.8/eloquent">Laravel framework documentation</a></p>
+  <p>For further documentation on using the various database facilities this library provides, consult the <a
+      target="_blank" href="https://laravel.com/docs/5.8/eloquent">Laravel framework documentation</a></p>
 </div>

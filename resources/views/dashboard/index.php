@@ -7,9 +7,11 @@
  |
 -->
 
-<div class="wp-kirk wrap">
+<div class="wp-kirk wrap wp-kirk-sample">
 
   <h1>Hello, I'm the first <?php echo $plugin->Name ?> view</h1>
+  <h2>PHP Version<?php echo phpversion() ?>
+  </h2>
 
   <div class="wp-kirk-toc clearfix">
     <ul>
@@ -21,13 +23,14 @@
   </div>
 
   <div class="wp-kirk-toc-content">
-    <hr/>
+    <hr />
     <a name="passing-data"></a>
     <h2>Passing data to view</h2>
 
-    <p>You may get variable from the controller. For example, the variable <code>kirk</code>is <?php echo $kirk ?></p>
+    <p>You may get variable from the controller. For example, the variable <code>kirk</code>is <?php echo $kirk ?>
+    </p>
 
-    <hr/>
+    <hr />
     <a name="configuration"></a>
     <h2>Configuration</h2>
     <p>Get the <code>custom</code> configuration by using</p>
@@ -35,10 +38,10 @@
     <pre>
   echo $plugin->config( 'custom.sample' );
 
-  // <?php echo $plugin->config( 'custom.sample' ) ?>
+  // <?php echo $plugin->config('custom.sample') ?>
     </pre>
 
-    <hr/>
+    <hr />
     <a name="plugin-information"></a>
     <h2>Plugin information</h2>
     <p>You may get the plugin infomation by using</p>
@@ -48,15 +51,19 @@
     </pre>
 
     <p>Author: <code><?php echo $plugin->Author ?></code></p>
-    <p>Description: <code><?php echo $plugin->Description ?></code></p>
+    <p>Description: <code><?php echo $plugin->Description ?></code>
+    </p>
     <p>Version: <code><?php echo $plugin->Version ?></code></p>
-    <p>Text Domain: <code><?php echo $plugin->TextDomain ?></code></p>
+    <p>Text Domain: <code><?php echo $plugin->TextDomain ?></code>
+    </p>
 
-    <hr/>
+    <hr />
     <a name="custom-page"></a>
     <h2>Custom Page</h2>
     <p>You may create a custom page without added a menu.</p>
-    <p><a href="<?php echo $plugin->getPageUrl( 'custom_page' ) ?>">Custom Page</a></p>
+    <p><a
+        href="<?php echo $plugin->getPageUrl('custom_page') ?>">Custom
+        Page</a></p>
 
   </div>
 </div>

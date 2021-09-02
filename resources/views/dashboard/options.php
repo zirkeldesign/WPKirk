@@ -7,7 +7,7 @@
 |
 -->
 
-<div class="wp-kirk wrap">
+<div class="wp-kirk wrap wp-kirk-sample">
 
   <h1>Options</h1>
 
@@ -27,10 +27,10 @@
 
     <!-- Current options -->
     <a name="current-options"></a>
-    <hr/>
+    <hr />
     <h2>Current option</h2>
 
-    <p>The current options are:</p>
+    <p>Here you can see he current options are:</p>
 
     <pre>
   echo $plugin->options;
@@ -39,27 +39,33 @@
     </pre>
 
     <h3>Get option</h3>
+    <p>As you can see you'll be able to get the options by using the <strong>dot</strong> notation</p>
+
     <pre>
   echo $plugin->options->get( 'General.option_2');
-  // <?php echo $plugin->options->get( 'General.option_2' ) ?>
+  // <?php echo $plugin->options->get('General.option_2') ?>
   </pre>
 
     <h3>Get option by an array</h3>
+    <p>You may also retrive an option sub-branch as an <code>Array</code></p>
     <pre>
-  echo $plugin->options['General.option_2'];
-  // <?php echo $plugin->options[ 'General.option_2' ] ?>
+  echo $plugin->options['General'];
+
+<?php echo var_export($plugin->options[ 'General' ], true)?>
   </pre>
 
-    <h3>Get branch option</h3>
     <pre>
   echo $plugin->options->get( 'General.option_3');
-<?php echo var_export( $plugin->options->get( 'General.option_3' ) ) ?>
+
+<?php echo var_export($plugin->options->get('General.option_3')) ?>
   </pre>
 
     <h3>Get option</h3>
+    <p>You may avoid to use the <code>get()</code> method in such caes</p>
+
     <pre>
   echo $plugin->options->get( 'General.option_3.sub_option_of_3');
-  // <?php echo $plugin->options->get( 'General.option_3.sub_option_of_3' ) ?>
+  // <?php echo $plugin->options->get('General.option_3.sub_option_of_3') ?>
     </pre>
     <pre>
   echo $plugin->options[ 'General.option_3.sub_option_of_3' ];
@@ -67,30 +73,49 @@
     </pre>
 
     <h3>Get default option </h3>
+    <p>Of course, you'll be able to define any default value if the branch/key doesn't exists</p>
     <pre>
   echo $plugin->options->get( 'General.doNotExists', 'default' );
-  // <?php echo $plugin->options->get( 'General.doNotExists', 'default' ) ?>
+  // <?php echo $plugin->options->get('General.doNotExists', 'default') ?>
     </pre>
 
     <!-- Update -->
     <a name="update"></a>
-    <hr/>
+    <hr />
     <h2>Update</h2>
+    <p>You may update any options and branch tree in the same way, by using the dot notation</p>
 
-    <?php $plugin->options->set( 'Special.Name', 'John' ) ?>
+    <?php $plugin->options->set('Special.Name', 'John') ?>
     <pre>
   $plugin->options->set( 'Special.Name', 'John' );
 
 <?php echo $plugin->options ?>
     </pre>
 
+    <!-- Update tree -->
+    <a name="update"></a>
+    <hr />
+    <h2>Update Tree</h2>
+
+    <?php $plugin->options->set('General.option_3.sub_option_of_3', 'FooBar') ?>
+    <pre>
+  $plugin->options->set( 'General.option_3.sub_option_of_3', 'FooBar' );
+
+<?php echo $plugin->options ?>
+    </pre>
+
     <h3>Change with mixed value</h3>
-    <?php $plugin->options->set( 'Special.Name', [ 'John', 'Good' ] ) ?>
+    <p>Of course, you may also change the type of the stored key. Below, we're goinf to use and <code>Array</code>
+      instead of the previous <code>string</code></p>
+
+    <?php $plugin->options->set('Special.Name', [ 'John', 'Good' ]) ?>
     <pre>
   $plugin->options->set( 'Special.Name', [ 'John', 'Good' ] )
 
 <?php echo $plugin->options ?>
     </pre>
+
+    <p>and again...</p>
 
     <?php $plugin->options[ 'Special.Name' ] = [ 'Robin', 'Hood' ];?>
     <pre>
@@ -101,10 +126,11 @@
 
     <!-- Add -->
     <a name="add"></a>
-    <hr/>
+    <hr />
     <h2>Add</h2>
+    <p>Of course, adding new options will work in the same way by using the dot notation</p>
 
-    <?php $plugin->options->set( 'Special.time', time() ) ?>
+    <?php $plugin->options->set('Special.time', time()) ?>
     <pre>
   $plugin->options->set( 'Special.time', time() );
 
@@ -127,10 +153,12 @@
 
     <!-- Mass Update -->
     <a name="mass-update"></a>
-    <hr/>
+    <hr />
     <h3>Mass update</h3>
+    <p>In according with the options structure, you may also update a whole sub set of options instead of change them
+      individually</p>
     <?php $plugin->options->update(
-      [
+    [
         'General' => [
           'option_4' => [
             'color'      => 'red',
@@ -138,7 +166,7 @@
           ],
         ],
       ]
-    )
+)
     ?>
     <pre>
   $plugin->options->update(
@@ -154,11 +182,12 @@
 
     <!-- Mass Insert -->
     <a name="mass-insert"></a>
-    <hr/>
+    <hr />
     <h3>Mass insert</h3>
+    <p>Of course, you may use the mass feature for the insert as well</p>
 
     <?php $plugin->options->update(
-      [
+        [
         'General' => [
           'option_5' => [
             'color'      => 'red',
@@ -184,17 +213,21 @@
 
     <!-- Delete -->
     <a name="delete"></a>
-    <hr/>
+    <hr />
     <h2>Delete</h2>
+    <p>You may delete an option or a set of options by using the <code>set()</code> method along with <code>null</code>
+    </p>
 
-    <?php $plugin->options->set( 'General.option_1', null ) ?>
+    <?php $plugin->options->set('General.option_1', null) ?>
     <pre>
   $plugin->options->set( 'General.option_1', null );
 
 <?php echo $plugin->options ?>
     </pre>
 
-      <?php $plugin->options->delete( 'General.option_4' ) ?>
+    <p>Alternatively, you may use the <code>delete()</code> method</p>
+
+    <?php $plugin->options->delete('General.option_4') ?>
     <pre>
   $plugin->options->delete( 'General.option_4' );
 
@@ -202,6 +235,7 @@
     </pre>
 
     <h2>Delete all</h2>
+    <p>Finally, you may delete <strong>all</strong></p>
 
     <?php $plugin->options->delete() ?>
     <pre>
@@ -212,8 +246,10 @@
 
     <!-- Reset -->
     <a name="reset"></a>
-    <hr/>
+    <hr />
     <h2>Reset to default</h2>
+    <p>Don't worry, we can reset evenrything by using the original file</p>
+
     <?php $plugin->options->reset() ?>
     <pre>
   $plugin->options->reset();
