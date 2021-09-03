@@ -1,27 +1,18 @@
-import React, {Component} from "react"
-
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
 
 const View = styled.div`
-  background-color: #fff;
-  text-align: center;
-`
+	background-color: #fff;
+	text-align: center;
+	width: 300px;
+	border-radius: 16px;
+	padding: 16px;
+`;
 
-export default class MySample extends Component {
-
-  constructor(props)
-  {
-    super(props)
-
-    this.state = {}
-  }
-
-  render() {
-
-    return (
-      <View>
-        <h2>I'm a styled React Component</h2>
-      </View>
-    )
-  }
-}
+export const MySample = () => {
+	return (
+		<View>
+			<h2>I'm a styled React Component</h2>
+		</View>
+	);
+};
