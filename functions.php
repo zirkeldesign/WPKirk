@@ -1,6 +1,8 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (! defined('ABSPATH')) {
+    exit;
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -11,10 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 |
 */
 
-if ( ! function_exists( 'myGlobalFunction' ) ) {
-
-  function myGlobalFunction()
-  {
-    //
-  }
+if (! function_exists('myGlobalFunction')) {
+    function myGlobalFunction()
+    {
+        //
+    }
 }
