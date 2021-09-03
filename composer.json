@@ -1,7 +1,7 @@
 {
   "name": "wpbones/wpkirk",
   "type": "wordpress-plugin",
-  "description": "A boilerplate WordPress plugin demo for WP Bones library.",
+  "description": "A boilerplate WordPress plugin demo for WP Bones framework.",
   "keywords": ["wordpress"],
   "homepage": "http://wpbones.wordpress.com",
   "license": "GPL-3.0",

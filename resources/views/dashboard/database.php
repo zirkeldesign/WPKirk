@@ -16,12 +16,16 @@ use WPKirk\Http\Controllers\User;
 <div class="wp-kirk wrap wp-kirk-sample">
 
   <h1>Eloquent ORM</h1>
-  <p>The Eloquent ORM included with WP Bones provides a beautiful, simple ActiveRecord implementation for working with
-    your database. Each database table has a corresponding "Model" which is used to interact with that table. Models
-    allow you to query for data in your tables, as well as insert new records into the table.
+  <p>You may include the Eloquent ORM to provide a beautiful, simple ActiveRecord implementation for working with your
+    database. Each database table has a corresponding "Model" which is used to interact with that table. Models allow
+    you to query for data in your tables, as well as insert new records into the table.
   </p>
 
-  <p>Since WP Bones use the complete illuminate database package, for further documentation on using the various
+  <p>You may install Eloquent ORM in your plugin by using</p>
+
+  <pre>$ composer install illuminate/database</pre>
+
+  <p>A we are using the complete illuminate database package, for further documentation on using the various
     database facilities this library provides, consult the <a href="https://laravel.com/docs/8.x/eloquent">Laravel
       framework documentation</a></p>
 

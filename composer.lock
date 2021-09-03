@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4fe79d5bdc78b36e93c10ab6fff7ca70",
+    "content-hash": "979977c375faa02f620821f70d0f9501",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1066,16 +1066,15 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/wpbones/WPBones.git",
-                "reference": "87b148f3e601c5216fa2a563572600b18469f322"
+                "reference": "87395fc9c511d6a118f1616c2a89b9a8f5fcb043"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wpbones/WPBones/zipball/87b148f3e601c5216fa2a563572600b18469f322",
-                "reference": "87b148f3e601c5216fa2a563572600b18469f322",
+                "url": "https://api.github.com/repos/wpbones/WPBones/zipball/87395fc9c511d6a118f1616c2a89b9a8f5fcb043",
+                "reference": "87395fc9c511d6a118f1616c2a89b9a8f5fcb043",
                 "shasum": ""
             },
             "require": {
-                "illuminate/database": "^6.20",
                 "php": ">=7.2"
             },
             "default-branch": true,
@@ -1113,7 +1112,7 @@
                 "issues": "https://github.com/wpbones/WPBones/issues",
                 "source": "https://github.com/wpbones/WPBones/"
             },
-            "time": "2021-09-02T16:14:13+00:00"
+            "time": "2021-09-03T12:58:58+00:00"
         },
         {
             "name": "wpbones/wptables",
