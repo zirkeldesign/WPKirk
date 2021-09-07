@@ -9,9 +9,9 @@
 | which serves as the "glue" for all the components.
 |
 */
-if (class_exists('\WPKirk\WPBones\Foundation\Plugin')) {
 
-    $plugin = new \WPKirk\WPBones\Foundation\Plugin(
+if (class_exists('\WPXFollowgramLight\WPBones\Foundation\Plugin')) {
+    $plugin = new \WPXFollowgramLight\WPBones\Foundation\Plugin(
         realpath(__DIR__ . '/../')
     );
 
@@ -24,7 +24,7 @@ if (class_exists('\WPKirk\WPBones\Foundation\Plugin')) {
     |
     */
 
-//add_action( 'init', function() { } );
+    //add_action( 'widgets_init', 'your_widgets_init' );
 
     /*
     |--------------------------------------------------------------------------
@@ -40,7 +40,7 @@ if (class_exists('\WPKirk\WPBones\Foundation\Plugin')) {
     /**
      * Fire when the plugin is loaded
      */
-    do_action('wp-kirk_loaded');
+    do_action('wpx-followgram-light_loaded');
 
     return $plugin;
 }

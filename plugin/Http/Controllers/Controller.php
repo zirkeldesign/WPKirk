@@ -1,8 +1,8 @@
 <?php
 
-namespace WPKirk\Http\Controllers;
+namespace WPXFollowgramLight\Http\Controllers;
 
-use WPKirk\WPBones\Routing\Controller as BaseController;
+use WPXFollowgramLight\WPBones\Routing\Controller as BaseController;
 
 abstract class Controller extends BaseController {
 

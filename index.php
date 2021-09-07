@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Plugin Name: WP Kirk
+ * Plugin Name: WPX Followgram Light
  * Plugin URI: http://undolog.com
- * Description: WP Kirk is a WP Bones boilperate plugin
- * Version: dev-master
+ * Description: Simple sidebar widget that shows Your Instagram profile with 8 instagr.am pictures, follower, following and photos.
+ * Version: 2.1.0
  * Author: Giovambattista Fazioli
  * Author URI: http://undolog.com
- * Text Domain: wp-kirk
+ * Text Domain: wpx-followgram-light
  * Domain Path: localization
  *
  */
@@ -23,7 +23,7 @@
 | loading any of our classes later on. It feels nice to relax.
 |
 */
-use WPKirk\WPBones\Foundation\Plugin;
+use WPXFollowgramLight\WPBones\Foundation\Plugin;
 
 require_once __DIR__ . '/bootstrap/autoload.php';
 
@@ -36,20 +36,17 @@ require_once __DIR__ . '/bootstrap/autoload.php';
 |
 */
 
-// comodity define for text domain
-define( 'WPKIRK_TEXTDOMAIN', 'wp-kirk' );
+$GLOBALS[ 'WPXFollowgramLight' ] = require_once __DIR__ . '/bootstrap/plugin.php';
 
-$GLOBALS[ 'WPKirk' ] = require_once __DIR__ . '/bootstrap/plugin.php';
-
-if ( ! function_exists( 'WPKirk' ) ) {
+if (! function_exists('WPXFollowgramLight')) {
 
   /**
    * Return the instance of plugin.
    *
    * @return Plugin
    */
-  function WPKirk()
-  {
-    return $GLOBALS[ 'WPKirk' ];
-  }
+    function WPXFollowgramLight()
+    {
+        return $GLOBALS[ 'WPXFollowgramLight' ];
+    }
 }
