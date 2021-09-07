@@ -1,19 +1,30 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Plugin init configuration
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all actions or filters for your plugin.
-| This file is included on `init` action of WordPress.
-| You can use this file to add shortcode, for example.
-|
-*/
-
-// add_action( 'init' , [] );
-
 return [
+
+    /*
+  |--------------------------------------------------------------------------
+  | Use minified styles and scripts
+  |--------------------------------------------------------------------------
+  |
+  | If you would like gulp to compile and compress your styles and scripts
+  | the filenames in `public/css` will have `.min` as postfix. If this
+  | setting is TRUE then will be used the minified version.
+  |
+  */
+
+  'minified' => false,
+
+  /*
+  |--------------------------------------------------------------------------
+  | Screen options
+  |--------------------------------------------------------------------------
+  |
+  | Here is where you can register the screen options for List Table.
+  |
+  */
+
+  'screen_options' => [ ],
 
   /*
   |--------------------------------------------------------------------------
@@ -52,6 +63,18 @@ return [
 
   /*
   |--------------------------------------------------------------------------
+  | Widgets
+  |--------------------------------------------------------------------------
+  |
+  | Here is where you can register all of the Widget for a plugin.
+  |
+  */
+
+  'widgets' => [ '\WPXFollowgramLight\Widgets\FollowgramWidget' ],
+
+
+  /*
+  |--------------------------------------------------------------------------
   | Ajax
   |--------------------------------------------------------------------------
   |
@@ -60,5 +83,18 @@ return [
   */
 
   'ajax' => [ ],
+
+  /*
+  |--------------------------------------------------------------------------
+  | Autoloaded Service Providers
+  |--------------------------------------------------------------------------
+  |
+  | The service providers listed here will be automatically loaded on the
+  | init to your plugin. Feel free to add your own services to
+  | this array to grant expanded functionality to your applications.
+  |
+  */
+
+  'providers' => [ ]
 
 ];

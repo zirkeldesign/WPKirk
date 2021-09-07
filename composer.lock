@@ -1,20 +1,77 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "f93fed8c1840f8f9856a19739ebe9d25",
-    "content-hash": "627f3872fe2c927c1a06581bc014ce4e",
-    "packages": [],
+    "content-hash": "ebe38ceb4fcdcc7eba787ceac381708f",
+    "packages": [
+        {
+            "name": "wpbones/wpbones",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wpbones/WPBones.git",
+                "reference": "d3114251927bec16bf53bb00c69efdd29786b052"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wpbones/WPBones/zipball/d3114251927bec16bf53bb00c69efdd29786b052",
+                "reference": "d3114251927bec16bf53bb00c69efdd29786b052",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WPKirk\\WPBones\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Giovambattista Fazioli",
+                    "email": "giovambattista.fazioli@gmail.com",
+                    "homepage": "http://undolog.com"
+                }
+            ],
+            "description": "WordPress framework for Laravel developers",
+            "homepage": "https://github.com/wpbones/wpbones",
+            "keywords": [
+                "framework",
+                "laravel",
+                "plugins",
+                "themes",
+                "wordpress",
+                "wpbones"
+            ],
+            "support": {
+                "issues": "https://github.com/wpbones/WPBones/issues",
+                "source": "https://github.com/wpbones/WPBones/"
+            },
+            "time": "2021-09-07T12:21:53+00:00"
+        }
+    ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "wpbones/wpbones": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.5.9"
+        "php": ">=7.2"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.1.0"
 }

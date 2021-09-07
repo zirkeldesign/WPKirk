@@ -2,9 +2,9 @@
 Contributors: gfazioli
 Donate link: http://undolog.com
 Tags: instagram, followgram
-Requires at least: 4.5.2
-Tested up to: 4.5.3
-Stable tag: 2.0.3
+Requires at least: 5.6
+Tested up to: 5.8
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Display and manage your Instagram photos (via your Followgram profile).
 
 == Requirement ==
 
-* PHP >= 5.5.9+
+* PHP >= 7.2
 
 == Description ==
 

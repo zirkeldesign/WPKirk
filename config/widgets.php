@@ -9,4 +9,4 @@
 |
 */
 
-return [ 'WPXFollowgramLight\plugin\Widgets\FollowgramWidget' ];
+return [ 'WPXFollowgramLight\Widgets\FollowgramWidget' ];

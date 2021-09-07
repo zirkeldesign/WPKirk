@@ -1,31 +1,35 @@
 {
-  "name": "WPXFollowgramLight",
+  "name": "gfazioli/wpxfollowgramlight",
   "type": "wordpress-plugin",
   "description": "Display and manage your Instagram photos (via your Followgram profile).",
-  "keywords": [ "wordpress" ],
+  "keywords": ["wordpress"],
   "homepage": "http://undolog.com",
   "license": "GPL-3.0",
-  "authors": [
-    {
-      "name": "Giovambattista Fazioli",
-      "email": "giovambattista.fazioli@gmail.com",
-      "homepage": "http://undolog.com"
-    }
-  ],
+  "authors": [{
+    "name": "Giovambattista Fazioli",
+    "email": "giovambattista.fazioli@gmail.com",
+    "homepage": "http://undolog.com"
+  }],
   "support": {
     "issues": "https://wordpress.org/support/plugin/wpx-followgram-light",
     "source": "https://wordpress.org/plugins/wpx-followgram-light/developers/"
   },
   "require": {
-    "php": ">=5.5.9"
+    "php": ">=7.2",
+    "wpbones/wpbones": "dev-master"
   },
   "autoload": {
     "psr-4": {
-      "WPXFollowgramLight\\": "plugin/",
-      "WPXFollowgramLight\\WPBones\\": "vendor/wpbones/src/"
+      "WPXFollowgramLight\\": "plugin/"
     },
     "files": [
-      "vendor/wpbones/src/helpers.php"
+      "functions.php"
+    ]
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "php -r \"copy('vendor/wpbones/wpbones/src/Console/bin/bones', 'bones');\"",
+      "php bones rename"
     ]
   }
 }

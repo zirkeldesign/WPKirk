@@ -4,7 +4,7 @@
  * Plugin Name: WPX Followgram Light
  * Plugin URI: http://undolog.com
  * Description: Simple sidebar widget that shows Your Instagram profile with 8 instagr.am pictures, follower, following and photos.
- * Version: 2.0.3
+ * Version: 2.1.0
  * Author: Giovambattista Fazioli
  * Author URI: http://undolog.com
  * Text Domain: wpx-followgram-light
@@ -38,15 +38,15 @@ require_once __DIR__ . '/bootstrap/autoload.php';
 
 $GLOBALS[ 'WPXFollowgramLight' ] = require_once __DIR__ . '/bootstrap/plugin.php';
 
-if ( ! function_exists( 'WPXFollowgramLight' ) ) {
+if (! function_exists('WPXFollowgramLight')) {
 
   /**
    * Return the instance of plugin.
    *
    * @return Plugin
    */
-  function WPXFollowgramLight()
-  {
-    return $GLOBALS[ 'WPXFollowgramLight' ];
-  }
+    function WPXFollowgramLight()
+    {
+        return $GLOBALS[ 'WPXFollowgramLight' ];
+    }
 }
