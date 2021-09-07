@@ -1,18 +1,23 @@
-=== WP Kirk ===
+=== WPX Followgram Light ===
 Contributors: gfazioli
 Donate link: http://undolog.com
-Tags: wordpress
+Tags: instagram, followgram
 Requires at least: 4.5.2
-Tested up to: 4.5.2
-Stable tag: 1.0.0
+Tested up to: 4.5.3
+Stable tag: 2.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-WP Kirk boilerplate plugin.
+Display and manage your Instagram photos (via your Followgram profile).
+
+== Requirement ==
+
+* PHP >= 5.5.9+
 
 == Description ==
 
-WP Kirk boilerplate plugin
+An easy-to-use plugin to display and manage your Instagram photos (via your Followgram profile) in a nice and elegant way directly on your sidebar.
+Choose your layout, image sizes and start amaze people with your perfect shots from Followgram!
 
 == Installation ==
 
@@ -24,18 +29,24 @@ This section describes how to install the plugin and get it working.
 
 == Frequently Asked Questions ==
 
-= What is WP Bones framework ? =
-
-See detail to  ([WP Bones](http://gfazioli.github.io/WPBones)).
-
 == Screenshots ==
 
-Your screenshot
+1. Followgram widget
+2. Followgram Setting
+3. Followgram Theme
 
 == Changelog ==
 
-Your changelog
+= 2.0.0 =
+
+* Update core
+
+= 1.1.13 =
+
+* Create branch for WordPress.org repository
 
 == Upgrade Notice ==
 
-Your upgrade notice
+= 1.1.13 =
+
+* Create branch for WordPress.org repository

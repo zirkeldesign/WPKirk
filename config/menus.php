@@ -11,19 +11,27 @@
 */
 
 return [
-  'wp_kirk_slug_menu' => [
-    "page_title" => "WP Kirk Page title",
-    "menu_title" => "WP Kirk Menu title",
+  'wpx_followgram_light_slug_menu' => [
+    "page_title" => "Followgram",
+    "menu_title" => "Followgram",
     'capability' => 'read',
-    'icon'       => '',
+    'icon'       => 'logo-16x16.png',
     'items'      => [
       [
-        "page_title" => "Main View",
-        "menu_title" => "Main View",
+        "page_title" => __( 'Account Settings', 'wpx-followgram-light' ),
+        "menu_title" => __( 'Account Settings', 'wpx-followgram-light' ),
         'capability' => 'read',
-        'icon'       => '',
         'route'      => [
-          'get' => 'Dashboard\DashboardController@index'
+          'get'  => 'Dashboard\DashboardController@index',
+          'post' => 'Dashboard\DashboardController@save',
+        ],
+      ],
+      [
+        "page_title" => __( 'Widget', 'wpx-followgram-light' ),
+        "menu_title" => __( 'Widget', 'wpx-followgram-light' ),
+        'capability' => 'read',
+        'route'      => [
+          'get' => 'Dashboard\DashboardController@widget',
         ],
       ],
     ]

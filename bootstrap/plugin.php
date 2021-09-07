@@ -10,7 +10,7 @@
 |
 */
 
-$plugin = new \WPKirk\WPBones\Foundation\Plugin(
+$plugin = new \WPXFollowgramLight\WPBones\Foundation\Plugin(
   realpath( __DIR__ . '/../' )
 );
 
@@ -39,6 +39,6 @@ $plugin = new \WPKirk\WPBones\Foundation\Plugin(
 /**
  * Fire when the plugin is loaded
  */
-do_action( 'wp-kirk_loaded' );
+do_action( 'wpx-followgram-light_loaded' );
 
 return $plugin;

@@ -55,7 +55,7 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 class BonesCommandLine
 {
 
-  const VERSION = '0.1.15';
+  const VERSION = '0.5.24';
 
   public function __construct()
   {
@@ -99,25 +99,25 @@ class BonesCommandLine
     $this->line( "  migrate:create\tCreate a new Migration" );
     $this->line( "  make:controller\tCreate a new Controller" );
     $this->line( "  rename\t\tSet or change the plugin name" );
+    $this->line( "  update\t\tUpdate the Framework" );
+    $this->line( "  deploy\t\tCreate a deploy version" );
+    $this->line( "  optimize\t\tRun composer dump-autoload with -o option" );
 
     echo "\n\n";
   }
 
-  //
   protected function line( $str )
   {
     echo "\033[38;5;82m" . $str;
     echo "\033[0m\n";
   }
 
-  //
   protected function info( $str )
   {
     echo "\033[38;5;213m" . $str;
     echo "\033[0m\n";
   }
 
-  //
   protected function ask( $str )
   {
     echo "\n\e[38;5;88m$str\e[0m ";
@@ -130,7 +130,6 @@ class BonesCommandLine
     return trim( $line, " \n\r" );
   }
 
-  //
   protected function option( $option )
   {
     $argv = $_SERVER[ 'argv' ];
@@ -140,8 +139,6 @@ class BonesCommandLine
 
     return in_array( $option, $argv );
   }
-
-  //
 
   /**
    * Return an array with all matched files from root folder. This method release the follow filters:
@@ -222,19 +219,29 @@ class BonesCommandLine
   |
   */
 
-  protected function rename( $pluginName )
+  protected function rename( $pluginName = '' )
   {
+    if ( empty( $pluginName ) ) {
+      // previous namespace
+      list( $pluginName, $previousNamespace ) = explode( ",", file_get_contents( 'namespace' ) );
 
-    // sanitize namespace
-    $namespace = str_replace( " ", "", $pluginName );
+      // sanitize namespace
+      $namespace          = str_replace( " ", "", $pluginName );
+      $previousPluginName = 'WP Kirk';
+      $previousNamespace  = 'WPKirk';
+    }
+    else {
+      // sanitize namespace
+      $namespace = str_replace( " ", "", $pluginName );
 
-    // previous namespace
-    list( $previousPluginName, $previousNamespace ) = explode( ",", file_get_contents( 'namespace' ) );
+      // previous namespace
+      list( $previousPluginName, $previousNamespace ) = explode( ",", file_get_contents( 'namespace' ) );
 
-    // check the same?
-    if ( $previousNamespace == $namespace ) {
-      $this->info( "\nThe new namespace is equal. Nothing to change\n" );
-      exit( 0 );
+      // check the same?
+      if ( $previousNamespace == $namespace ) {
+        $this->info( "\nThe new namespace is equal. Nothing to change\n" );
+        exit( 0 );
+      }
     }
 
     // previous slug
@@ -255,11 +262,11 @@ class BonesCommandLine
 
     // remove all composer
     $files = array_filter( array_map( function ( $e ) {
-      if ( false === strpos( $e, "vendor/composer/" ) ) {
-        return $e;
+      if ( false !== strpos( $e, "vendor/composer/" ) || false !== strpos( $e, "node_modules" ) ) {
+        return false;
       }
 
-      return false;
+      return $e;
     }, $this->recursiveScan( "*" ) ) );
 
     // merge
@@ -275,13 +282,28 @@ class BonesCommandLine
 
       $this->line( "Loading and process " . $file . "..." );
 
-      //
       $content = file_get_contents( $file );
       $content = str_replace( $previousNamespace, $namespace, $content );
+      $content = str_replace( strtoupper( $previousNamespace ), strtoupper( $namespace ), $content );
       $content = str_replace( $previousSlug, $slug, $content );
       $content = str_replace( $previousPluginName, $pluginName, $content );
       $content = str_replace( $previousCssId, $currentCssId, $content );
       file_put_contents( $file, $content );
+    }
+
+    foreach ( glob( 'localization/*' ) as $file ) {
+      $newFile = str_replace( $previousCssId, $currentCssId, $file );
+      rename( $file, $newFile );
+    }
+
+    foreach ( glob( 'resources/assets/js/*' ) as $file ) {
+      $newFile = str_replace( $previousCssId, $currentCssId, $file );
+      rename( $file, $newFile );
+    }
+
+    foreach ( glob( 'resources/assets/less/*' ) as $file ) {
+      $newFile = str_replace( $previousCssId, $currentCssId, $file );
+      rename( $file, $newFile );
     }
 
     // save new namespace
@@ -302,7 +324,7 @@ class BonesCommandLine
       $this->line( "\nUsage:" );
       $this->info( "  install <plugin name>\n" );
       $this->line( "Arguments:" );
-      $this->info( "  plugin name\tThe name of plugin" );
+      $this->info( "  plugin name\tThe name of plugin. Add quotes if the plugin name containes spaces." );
       exit( 0 );
     }
     else {
@@ -313,6 +335,117 @@ class BonesCommandLine
 
     $this->rename( $name );
 
+  }
+
+  protected function update()
+  {
+    // we have to remove previous version
+    $res = `rm -rf vendor/wpbones`;
+
+    // clone the last version
+    $res = `git clone -b develop https://github.com/gfazioli/WPBones.git vendor/wpbones`;
+
+    // copy bones
+    $res = rename( 'vendor/wpbones/src/Console/bin/bones', 'bones' );
+
+    // rename as is it and execute composer
+    $this->rename();
+  }
+
+  protected function deploy( $path )
+  {
+    if ( empty( $path ) ) {
+      $path = $this->ask( 'Enter the complete path of deploy:' );
+    }
+    elseif ( "--help" === $path ) {
+      $this->line( "\nUsage:" );
+      $this->info( "  deploy <path>\n" );
+      $this->line( "Arguments:" );
+      $this->info( "  path\tThe complete path of deploy." );
+      exit( 0 );
+    }
+
+    if ( ! empty( $path ) ) {
+      $this->xcopy( __DIR__, $path );
+
+      $this->deleteDirectory( "{$path}/resources/assets" );
+      $this->deleteDirectory( "{$path}/.git" );
+
+      $files = [
+        '.gitignore',
+        'bones',
+        'composer.json',
+        'composer.lock',
+        'gulpfile.js',
+        'namespace',
+        'package.json'
+      ];
+
+      array_map( function ( $file ) use ( $path ) {
+        unlink( "$path/$file" );
+      }, $files );
+
+    }
+  }
+
+  protected function optimize()
+  {
+    $res = `composer dump-autoload -o`;
+  }
+
+  protected function deleteDirectory( $path )
+  {
+    array_map( function ( $file ) {
+
+      if ( is_dir( $file ) ) {
+        $this->deleteDirectory( $file );
+      }
+      else {
+        $this->info( "Removing... {$file}" );
+
+        unlink( $file );
+      }
+
+    }, glob( "{$path}/" . '{,.}[!.,!..]*', GLOB_MARK | GLOB_BRACE ) );
+
+    rmdir( "{$path}" );
+  }
+
+  protected function xcopy( $source, $dest, $permissions = 0755 )
+  {
+    // Check for symlinks
+    if ( is_link( $source ) ) {
+      return symlink( readlink( $source ), $dest );
+    }
+
+    // Simple copy for a file
+    if ( is_file( $source ) ) {
+      $this->line( "Copying... {$source} to {$dest}" );
+
+      return copy( $source, $dest );
+    }
+
+    // Make destination directory
+    if ( ! is_dir( $dest ) ) {
+      mkdir( $dest, $permissions );
+    }
+
+    // Loop through the folder
+    $dir = dir( $source );
+    while( false !== $entry = $dir->read() ) {
+      // Skip pointers
+      if ( $entry == '.' || $entry == '..' || false !== strpos( $entry, 'node_modules' )  ) {
+        continue;
+      }
+
+      // Deep copy directories
+      $this->xcopy( "$source/$entry", "$dest/$entry", $permissions );
+    }
+
+    // Clean up
+    $dir->close();
+
+    return true;
   }
 
   protected function migrateCreate( $tablename )
@@ -382,9 +515,21 @@ class BonesCommandLine
         $this->rename( $argv[ 1 ] );
       }
     }
-    // installe
+    // install
     elseif ( $this->option( 'install' ) ) {
       $this->install( $argv );
+    }
+    // Update
+    elseif ( $this->option( 'update' ) ) {
+      $this->update();
+    }
+    // Deploy
+    elseif ( $this->option( 'deploy' ) ) {
+      $this->deploy( $argv[ 1 ] );
+    }
+    // Optimize
+    elseif ( $this->option( 'optimize' ) ) {
+      $this->optimize();
     }
     // migrate:create {table_name}
     elseif ( $this->option( 'migrate:create' ) ) {

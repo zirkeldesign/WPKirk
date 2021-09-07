@@ -1,9 +1,9 @@
 {
-  "name": "WPKirk",
+  "name": "WPXFollowgramLight",
   "type": "wordpress-plugin",
-  "description": "A boilerplate WordPress plugin demo for WPBones library.",
+  "description": "Display and manage your Instagram photos (via your Followgram profile).",
   "keywords": [ "wordpress" ],
-  "homepage": "http://wpbones.wordpress.com",
+  "homepage": "http://undolog.com",
   "license": "GPL-3.0",
   "authors": [
     {
@@ -13,16 +13,16 @@
     }
   ],
   "support": {
-    "issues": "https://github.com/gfazioli/WPKirk/issues",
-    "source": "https://github.com/gfazioli/WPKirk/"
+    "issues": "https://wordpress.org/support/plugin/wpx-followgram-light",
+    "source": "https://wordpress.org/plugins/wpx-followgram-light/developers/"
   },
   "require": {
     "php": ">=5.5.9"
   },
   "autoload": {
     "psr-4": {
-      "WPKirk\\": "plugin/",
-      "WPKirk\\WPBones\\": "vendor/wpbones/src/"
+      "WPXFollowgramLight\\": "plugin/",
+      "WPXFollowgramLight\\WPBones\\": "vendor/wpbones/src/"
     },
     "files": [
       "vendor/wpbones/src/helpers.php"

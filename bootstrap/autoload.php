@@ -1,6 +1,6 @@
 <?php
 
-define( 'WPKirk_START', microtime(true));
+define( 'WPXFollowgramLight_START', microtime(true));
 
 /*
 |--------------------------------------------------------------------------

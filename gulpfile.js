@@ -47,6 +47,6 @@ gulp.task( 'watch', function()
 
   // Watch .less files
   gulp.watch( './resources/assets/less/**/*.less', [ 'less' ] );
-
+  gulp.watch( './resources/assets/js/**/*.js', [ 'scripts' ] );
 
 } );
