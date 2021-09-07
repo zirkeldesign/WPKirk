@@ -1,0 +1,24 @@
+div#wpxfollowgram-intro p
+{
+  font-size : 14px;
+}
+
+div#wpxfollowgram-intro .aligncenter
+{
+  text-align : center;
+}
+
+div#wpxfollowgram-intro .aligncenter img
+{
+  -moz-box-shadow    : 0 10px 20px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow : 0 10px 20px rgba(0, 0, 0, 0.3);
+  box-shadow         : 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+div#wpxfollowgram-intro .aligncenter span
+{
+  display     : block;
+  margin      : 8px 0 32px;
+  font-weight : bold;
+  color       : #666;
+}
