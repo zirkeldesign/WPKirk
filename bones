@@ -80,14 +80,31 @@ class BonesCommandLine
         | We have to load the WordPress environment.
         |
         */
-        if (!file_exists(__DIR__ . '/../../../wp-load.php')) {
+        $root = getenv('PWD') ?: __DIR__;
+        $paths = [
+            // Standard WordPress folder structure.
+            dirname($root, 2),
+            // Bedrock folder structure.
+            dirname($root, 3) . '/wp',
+        ];
+        $found = null;
+        foreach ($paths as $path) {
+            if (!$path) {
+                continue;
+            }
+            if (file_exists($path . '/wp-load.php')) {
+                $found = $path . '/wp-load.php';
+                break;
+            }
+        }
+        if (!$found) {
             echo "\n\033[33;5;82mWarning!!\n";
-            echo "\n\033[38;5;82m\t" . 'You must be inside "wp-content/plugins/" folders';
+            echo "\n\033[38;5;82m\t" . 'You must be inside WordPress Plugin folder';
             echo "\033[0m\n\n";
             exit;
         }
 
-        require __DIR__ . '/../../../wp-load.php';
+        require $found;
 
         /*
         |--------------------------------------------------------------------------
